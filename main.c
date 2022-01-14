@@ -36,6 +36,8 @@ struct add_income {
 
 }; struct add_income inc ;
 
+struct add_income *startInc , *endInc , *tempInc ;
+
 struct add_expenses {
 
     char user_login [50];
@@ -48,6 +50,8 @@ struct add_expenses {
     struct add_expenses *link ;
 
 }; struct add_expenses exp ;
+
+struct add_expenses *startExp , *endExp , *tempExp ;
 
 
 
@@ -313,17 +317,17 @@ void main_menu ()
         case '3':
             system("COLOR b");
             system("cls");
-            login();
+            statistics();
             break;
         case '4':
             system("COLOR b");
             system("cls");
-            settings();
+            settings ();
             break;
         case '5':
             system("COLOR b");
             system("cls");
-            login();
+            expensesLinkedList ();
             break;
         case '6':
             system("COLOR b");
@@ -639,11 +643,11 @@ void expenses ()
 
             printf("Please specify the date of income : \n");
             printf("Day : ");
-            scanf("%s" ,&inc.day );
+            scanf("%s" ,&exp.day );
             printf("Month :");
-            scanf("%s", &inc.month );
+            scanf("%s", &exp.month );
             printf("Year : ");
-            scanf("%s", &inc.year );
+            scanf("%s", &exp.year );
             printf("Please enter description : ");
             scanf("%s" , &exp.description);
             printf("\n Done!");
@@ -670,6 +674,41 @@ void expenses ()
 
 void statistics ()
 {
+    incomeLinkedList ();
+    tempInc = startInc ;
+    while ( tempInc != NULL )
+    {
+        if(strcmp( tempInc->user_login , "hossein") == 0 )
+        {
+        printf("user : %s\n" , tempInc-> user_login ) ;
+        printf("source : %s\n" , tempInc-> source ) ;
+        printf("amount : %s\n" , tempInc-> amount ) ;
+        printf("des : %s\n" , tempInc-> description ) ;
+        printf("day : %s\n" , tempInc-> day ) ;
+        printf("month : %s\n" , tempInc-> month ) ;
+        printf("year : %s\n" , tempInc-> year ) ;
+        printf("\n----------------------------\n");
+        }
+        tempInc = tempInc->link ;
+    }
+    printf("\n*********************\n") ;
+    expensesLinkedList ();
+    tempExp = startExp ;
+        while ( tempExp != NULL )
+    {
+        if(strcmp( tempExp->user_login , "hossein") == 0 )
+        {
+        printf("user : %s\n" , tempExp-> user_login ) ;
+        printf("source : %s\n" , tempExp-> source ) ;
+        printf("amount : %s\n" , tempExp-> amount ) ;
+        printf("des : %s\n" , tempExp-> description ) ;
+        printf("day : %s\n" , tempExp-> day ) ;
+        printf("month : %s\n" , tempExp-> month ) ;
+        printf("year : %s\n" , tempExp-> year ) ;
+        printf("\n----------------------------\n");
+        }
+        tempExp = tempExp->link ;
+    }
 
 
 }
@@ -775,7 +814,122 @@ void settings ()
 
             }
 
+}
 
+void incomeLinkedList ()
+{
+    FILE *fp ;
+    fp = fopen ("income.txt" , "r") ;
+    if (fp == NULL )
+    {
+        printf("File could not be opened");
+
+    }
+    //struct add_income *start , *end , *temp ;
+    tempInc = malloc(sizeof(struct add_income));
+    fread(&inc , sizeof(struct add_income ) , 1 , fp );
+    strcpy(tempInc->user_login , inc.user_login ) ;
+    strcpy(tempInc->source , inc.source ) ;
+    strcpy(tempInc->amount , inc.amount ) ;
+    strcpy(tempInc->description , inc.description ) ;
+    strcpy(tempInc->day , inc.day ) ;
+    strcpy(tempInc->month , inc.month ) ;
+    strcpy(tempInc->year , inc.year ) ;
+    tempInc->link = NULL;
+    startInc = tempInc ;
+    endInc = tempInc ;
+    while (fread(&inc , sizeof (struct add_income )  , 1 , fp )==1)
+    {
+        tempInc = malloc(sizeof(struct add_income));
+        tempInc->link = NULL;
+        strcpy(tempInc->user_login , inc.user_login ) ;
+        strcpy(tempInc->source , inc.source ) ;
+        strcpy(tempInc->amount , inc.amount ) ;
+        strcpy(tempInc->description , inc.description ) ;
+        strcpy(tempInc->day , inc.day ) ;
+        strcpy(tempInc->month , inc.month ) ;
+        strcpy(tempInc->year , inc.year ) ;
+        endInc->link = tempInc ;
+        endInc = tempInc ;
+    }
+    fclose(fp);
+    tempInc = startInc ;
+
+    while ( tempInc != NULL )
+    {
+        if(strcmp( tempInc->user_login , "sina") == 0 )
+        {
+        printf("user : %s\n" , tempInc-> user_login ) ;
+        printf("source : %s\n" , tempInc-> source ) ;
+        printf("amount : %s\n" , tempInc-> amount ) ;
+        printf("des : %s\n" , tempInc-> description ) ;
+        printf("day : %s\n" , tempInc-> day ) ;
+        printf("month : %s\n" , tempInc-> month ) ;
+        printf("year : %s\n" , tempInc-> year ) ;
+        printf("\n----------------------------\n");
+        }
+        tempInc = tempInc->link ;
+    }
+
+
+}
+
+void expensesLinkedList ()
+{
+    printf("hello\n");
+    FILE *fp ;
+    fp = fopen ("expenses.txt" , "r") ;
+    if (fp == NULL )
+    {
+        printf("File could not be opened");
+
+    }
+    printf("hello\n");
+    // struct add_expenses *startExp , *endExp , *tempExp ;
+    fread(&exp , sizeof(struct add_expenses ) , 1 , fp );
+    strcpy(tempExp->user_login , exp.user_login ) ;
+    strcpy(tempExp->source , exp.source ) ;
+    strcpy(tempExp->amount , exp.amount ) ;
+    strcpy(tempExp->description , exp.description ) ;
+    strcpy(tempExp->day , exp.day ) ;
+    strcpy(tempExp->month , exp.month ) ;
+    strcpy(tempExp->year , exp.year ) ;
+    tempExp->link = NULL;
+    startExp = tempExp ;
+    endExp = tempExp ;
+    while (fread(&exp , sizeof (struct add_expenses )  , 1 , fp )==1)
+    {
+        tempExp = malloc(sizeof(struct add_expenses));
+        tempExp->link = NULL;
+        strcpy(tempExp->user_login , exp.user_login ) ;
+        strcpy(tempExp->source , exp.source ) ;
+        strcpy(tempExp->amount , exp.amount ) ;
+        strcpy(tempExp->description , exp.description ) ;
+        strcpy(tempExp->day , exp.day ) ;
+        strcpy(tempExp->month , exp.month ) ;
+        strcpy(tempExp->year , exp.year ) ;
+        endExp->link = tempExp ;
+        endExp = tempExp ;
+    }
+    fclose(fp);
+    tempExp = startExp ;
+
+    while ( tempExp != NULL )
+    {
+        if(strcmp( tempExp->user_login , "sina") == 0 )
+        {
+        printf("user : %s\n" , tempExp-> user_login ) ;
+        printf("source : %s\n" , tempExp-> source ) ;
+        printf("amount : %s\n" , tempExp-> amount ) ;
+        printf("des : %s\n" , tempExp-> description ) ;
+        printf("day : %s\n" , tempExp-> day ) ;
+        printf("month : %s\n" , tempExp-> month ) ;
+        printf("year : %s\n" , tempExp-> year ) ;
+        printf("\n----------------------------\n");
+        }
+        tempExp = tempExp->link ;
+    }
+    printf("hello\n");
 
 
 }
