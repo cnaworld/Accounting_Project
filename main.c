@@ -327,7 +327,7 @@ void main_menu ()
         case '5':
             system("COLOR b");
             system("cls");
-            expensesLinkedList ();
+            login ();
             break;
         case '6':
             system("COLOR b");
@@ -674,7 +674,73 @@ void expenses ()
 
 void statistics ()
 {
-    incomeLinkedList ();
+
+
+    int choice ;
+    system("COLOR c");
+    printf("\n\n");
+	printf("                           \xDB\xDB\xDB\xDB\xB2 1. Income Reports   ");
+	printf("\n\n");
+	printf("                           \xDB\xDB\xDB\xDB\xB2 2. Expenses Reports  ");
+	printf("\n\n");
+	printf("                           \xDB\xDB\xDB\xDB\xB2 3. Account balances reports  ");
+	printf("\n\n");
+	printf("                           \xDB\xDB\xDB\xDB\xB2 4. Main Menu  ");
+	printf("\n\n");
+	printf("                           \xDB\xDB\xDB\xDB\xB2 5. Exit   ");
+	printf("\n\n");
+	printf("Please enter your choice : ");
+	choice = getch();
+	choice=toupper(choice);
+	switch(choice)
+	{
+        case '1':
+            system("COLOR b");
+            system("cls");
+            incomeReports();
+            break;
+        case '2':
+            system("COLOR b");
+            system("cls");
+            expenses();
+            break;
+        case '3':
+            system("COLOR b");
+            system("cls");
+            statistics();
+            break;
+        case '4':
+            system("COLOR b");
+            system("cls");
+            main_menu ();
+            break;
+        case '5':
+            system("COLOR b");
+            system("cls");
+            printf("\n\n\n\n\n");
+            printf("\n");
+            printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *         | Thank You For using the app |         *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+            Sleep(3000);
+            exit(0);
+            break;
+	}
+
+
+
+
+
+    /* incomeLinkedList ();
     tempInc = startInc ;
     while ( tempInc != NULL )
     {
@@ -691,8 +757,9 @@ void statistics ()
         }
         tempInc = tempInc->link ;
     }
-    printf("\n*********************\n") ;
-    expensesLinkedList ();
+    printf("\n*********************\n") ; */
+
+   /* expensesLinkedList ();
     tempExp = startExp ;
         while ( tempExp != NULL )
     {
@@ -709,6 +776,7 @@ void statistics ()
         }
         tempExp = tempExp->link ;
     }
+    */
 
 
 }
@@ -853,7 +921,7 @@ void incomeLinkedList ()
         endInc = tempInc ;
     }
     fclose(fp);
-    tempInc = startInc ;
+    /*tempInc = startInc ;
 
     while ( tempInc != NULL )
     {
@@ -869,14 +937,13 @@ void incomeLinkedList ()
         printf("\n----------------------------\n");
         }
         tempInc = tempInc->link ;
-    }
+    } */
 
 
 }
 
 void expensesLinkedList ()
 {
-    printf("hello\n");
     FILE *fp ;
     fp = fopen ("expenses.txt" , "r") ;
     if (fp == NULL )
@@ -884,8 +951,8 @@ void expensesLinkedList ()
         printf("File could not be opened");
 
     }
-    printf("hello\n");
-    // struct add_expenses *startExp , *endExp , *tempExp ;
+    // struct add_expenses *startExp , *endExp , *tempExp
+    tempExp = malloc(sizeof(struct add_expenses)) ;
     fread(&exp , sizeof(struct add_expenses ) , 1 , fp );
     strcpy(tempExp->user_login , exp.user_login ) ;
     strcpy(tempExp->source , exp.source ) ;
@@ -912,6 +979,7 @@ void expensesLinkedList ()
         endExp = tempExp ;
     }
     fclose(fp);
+    /*
     tempExp = startExp ;
 
     while ( tempExp != NULL )
@@ -929,9 +997,58 @@ void expensesLinkedList ()
         }
         tempExp = tempExp->link ;
     }
-    printf("hello\n");
+    */
 
 
+}
+
+void incomeReports()
+{
+    incomeLinkedList();
+    int choice ;
+    system("COLOR c");
+    printf("\n\n");
+	printf("                           \xDB\xDB\xDB\xDB\xB2 1. Total income for a specified year   ");
+	printf("\n\n");
+	printf("                           \xDB\xDB\xDB\xDB\xB2 2. Total income for a period of time  ");
+	printf("\n\n");
+	printf("                           \xDB\xDB\xDB\xDB\xB2 3. The amount of a certain type of income in a range  ");
+	printf("\n\n");
+	printf("                           \xDB\xDB\xDB\xDB\xB2 4. The ratio of different incomes to each other  ");
+	printf("\n\n");
+	printf("                           \xDB\xDB\xDB\xDB\xB2 5. Micro-revenues of a period   ");
+	printf("\n\n");
+    printf("                           \xDB\xDB\xDB\xDB\xB2 6. The largest income figure in a period   ");
+	printf("\n\n");
+    printf("                           \xDB\xDB\xDB\xDB\xB2 7. specific word search in the income Description field   ");
+	printf("\n\n");
+    printf("                           \xDB\xDB\xDB\xDB\xB2 8. Main Menu    ");
+	printf("\n\n");
+	printf("Please enter your choice : ");
+	choice = getch();
+	choice=toupper(choice);
+    if ( choice == '1' )
+    {
+        char year ;
+        int amount , sum = 0 ;
+        //int search ;
+        // search = atoi(tempInc-> year) ;
+        printf("Please enter year : ") ;
+        scanf("%s" , &year ) ;
+
+        tempInc = startInc ;
+        while ( tempInc != NULL )
+        {
+            if(strcmp( tempInc->year , year ) == 0 )
+            {
+                amount = atoi(tempInc->amount) ;
+                sum = amount + sum ;
+            }
+            tempInc = tempInc->link ;
+        }
+        printf("\n\n\n%d" , sum ) ;
+
+    }
 }
 
 
