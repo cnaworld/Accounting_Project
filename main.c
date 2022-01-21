@@ -702,7 +702,7 @@ void statistics ()
         case '2':
             system("COLOR b");
             system("cls");
-            expenses();
+            expensesReports();
             break;
         case '3':
             system("COLOR b");
@@ -1012,13 +1012,13 @@ void incomeReports()
 	printf("\n\n");
 	printf("                           \xDB\xDB\xDB\xDB\xB2 2. Total income for a period of time  ");
 	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 3. The amount of a certain type of income in a range  ");
+	printf("                           \xDB\xDB\xDB\xDB\xB2 3. The amount of a certain type of income in a period of time  ");
 	printf("\n\n");
 	printf("                           \xDB\xDB\xDB\xDB\xB2 4. The ratio of different incomes to each other  ");
 	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 5. Micro-revenues of a period   ");
+	printf("                           \xDB\xDB\xDB\xDB\xB2 5. Micro-revenues of a period of time   ");
 	printf("\n\n");
-    printf("                           \xDB\xDB\xDB\xDB\xB2 6. The largest income figure in a period   ");
+    printf("                           \xDB\xDB\xDB\xDB\xB2 6. The largest income figure in a period of time  ");
 	printf("\n\n");
     printf("                           \xDB\xDB\xDB\xDB\xB2 7. specific word search in the income Description field   ");
 	printf("\n\n");
@@ -1034,7 +1034,7 @@ void incomeReports()
         int year ;
         int amount , sum = 0 ;
         int search ;
-        printf("Lotfan Saal mored nazar ra vared konid : ") ;
+        printf("Please enter the desired year : ") ;
         scanf("%d" , &year ) ;
         tempInc = startInc ;
         while ( tempInc != NULL )
@@ -1064,9 +1064,9 @@ void incomeReports()
         int endYear , endDay , endMonth ;
         int searchYear , searchDay , searchMonth ;
         int amount , sum = 0 ;
-        printf("Tarikh aval ra vared konid (yyyy/mm/dd) : ") ;
+        printf("Please enter the start date(yyyy/mm/dd) : ") ;
         scanf("%d/%d/%d" , &startYear , &startDay , &startMonth) ;
-        printf("\nTarikh dovom ra vared konid (yyyy/mm/dd) : ");
+        printf("\nPlease enter the end date(yyyy/mm/dd) : ");
         scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
         tempInc = startInc ;
         while ( tempInc != NULL )
@@ -1076,103 +1076,6 @@ void incomeReports()
             searchDay = atoi(tempInc->day);
             searchMonth = atoi(tempInc->month);
             validDate = checkDate (startYear ,startDay ,startMonth ,endYear ,endDay ,endMonth ,searchYear ,searchDay ,searchMonth );
-            /*if (searchYear > startYear)
-            {
-                if (searchYear < endYear )
-                    valid = 1 ;
-            }
-            if (searchYear > startYear)
-            {
-                if(searchYear == endYear )
-                {
-                    if (searchMonth < endMonth)
-                        valid = 1 ;
-                }
-            }
-            if (searchYear > startYear)
-            {
-                if(searchYear == endYear )
-                {
-                    if (searchMonth == endMonth)
-                    {
-                        if (searchDay <= endDay)
-                            valid = 1 ;
-                    }
-                }
-            }
-            if (searchYear == startYear )
-            {
-                if (searchYear == endYear)
-                {
-                    if (searchMonth == startMonth)
-                    {
-                        if (searchMonth == endMonth)
-                        {
-                            if (searchDay >= startDay && searchDay <= endDay )
-                                valid = 1 ;
-                        }
-                    }
-                }
-            }
-
-          if (searchYear == startYear )
-            {
-                if (searchYear == endYear)
-                {
-                    if (searchMonth == startMonth)
-                    {
-                        if (searchMonth < endMonth)
-                        {
-                            if (searchDay >= startDay )
-                                valid = 1 ;
-                        }
-                    }
-                }
-            }
-            if (searchYear == startYear )
-            {
-                if (searchYear == endYear)
-                {
-                    if (searchMonth > startMonth)
-                    {
-                        if (searchMonth == endMonth)
-                        {
-                            if (searchDay <= startDay )
-                                valid = 1 ;
-                        }
-                    }
-                }
-            }
-            if (searchYear == startYear )
-            {
-                if (searchYear == endYear)
-                {
-                    if (searchMonth > startMonth)
-                    {
-                        if (searchMonth < endMonth)
-                            valid = 1 ;
-                    }
-                }
-            }
-            if (searchYear == startYear )
-            {
-                if (searchYear < endYear)
-                {
-                    if (searchMonth == startMonth)
-                    {
-                        if (searchDay >= startDay)
-                            valid = 1 ;
-                    }
-                }
-            }
-            if (searchYear == startYear )
-            {
-                if (searchYear < endYear)
-                {
-                    if (searchMonth > startMonth)
-                        valid = 1 ;
-                }
-            } */
             if (validDate == 1 && strcmp(tempInc->user_login , user_given )== 0 )
             {
                 printf("%s+" , tempInc->amount);
@@ -1458,12 +1361,480 @@ void incomeReports()
     }
 
 
+    if (choice == '7')
+    {
+
+
+
+
+
+
+
+
+
+    }
+
+
+    if (choice == '8')
+    {
+        system("cls") ;
+        main_menu () ;
+    }
+
+
 
 
 
 
 
 }
+
+void expensesReports ()
+{
+    expensesLinkedList();
+    int choice ;
+    system("COLOR c");
+    printf("\n\n");
+	printf("                           \xDB\xDB\xDB\xDB\xB2 1. Total expenses for a specified year   ");
+	printf("\n\n");
+	printf("                           \xDB\xDB\xDB\xDB\xB2 2. Total expenses for a period of time  ");
+	printf("\n\n");
+	printf("                           \xDB\xDB\xDB\xDB\xB2 3. The amount of a certain type of expenses in a period of time  ");
+	printf("\n\n");
+	printf("                           \xDB\xDB\xDB\xDB\xB2 4. The ratio of different expenses to each other  ");
+	printf("\n\n");
+	printf("                           \xDB\xDB\xDB\xDB\xB2 5. Micro-expenses of a period of time   ");
+	printf("\n\n");
+    printf("                           \xDB\xDB\xDB\xDB\xB2 6. The largest expenses figure in a period of time  ");
+	printf("\n\n");
+    printf("                           \xDB\xDB\xDB\xDB\xB2 7. specific word search in the expenses Description field   ");
+	printf("\n\n");
+    printf("                           \xDB\xDB\xDB\xDB\xB2 8. Main Menu    ");
+	printf("\n\n");
+	printf("Please enter your choice : ");
+	choice = getche();
+	printf("\n");
+
+    if ( choice == '1' )
+    {
+        system("cls");
+        int year ;
+        int amount , sum = 0 ;
+        int search ;
+        printf("Please enter the desired year : ") ;
+        scanf("%d" , &year ) ;
+        tempExp = startExp ;
+        while ( tempExp != NULL )
+        {
+            search = atoi(tempExp-> year) ;
+            if( search == year && strcmp(tempExp->user_login , user_given )== 0  )
+            {
+                printf("%s+" , tempExp->amount);
+                amount = atoi(tempExp->amount) ;
+                sum = amount + sum ;
+            }
+            tempExp = tempExp->link ;
+        }
+        printf("= ");
+        printf("\n\n\nkol Makharej sal %d : %d" ,  year , sum ) ;
+        getchar();
+            expensesReports();
+
+    }
+
+    if (choice == '2' )
+    {
+        system("cls");
+        int startYear , startDay , startMonth ;
+        int endYear , endDay , endMonth ;
+        int searchYear , searchDay , searchMonth ;
+        int amount , sum = 0 ;
+        printf("Please enter the start date(yyyy/mm/dd) : ") ;
+        scanf("%d/%d/%d" , &startYear , &startDay , &startMonth) ;
+        printf("\nPlease enter the end date(yyyy/mm/dd) : ");
+        scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
+        tempExp = startExp ;
+        while ( tempExp != NULL )
+        {
+            int validDate = 0 ;
+            searchYear = atoi(tempExp->year);
+            searchDay = atoi(tempExp->day);
+            searchMonth = atoi(tempExp->month);
+            validDate = checkDate (startYear ,startDay ,startMonth ,endYear ,endDay ,endMonth ,searchYear ,searchDay ,searchMonth );
+            if (validDate == 1 && strcmp(tempExp->user_login , user_given )== 0 )
+            {
+                printf("%s+" , tempExp->amount);
+                amount = atoi(tempExp->amount) ;
+                sum = amount + sum ;
+
+            }
+
+            tempExp = tempExp->link ;
+        }
+            printf("= ");
+            printf("\n\n\nkol makharej  : %d" , sum ) ;
+            getchar();
+            expensesReports();
+
+    }
+
+    if ( choice == '3' )
+    {
+        system("cls");
+        int startYear , startDay , startMonth ;
+        int endYear , endDay , endMonth ;
+        int searchYear , searchDay , searchMonth ;
+        int amount , sum = 0 ;
+        char expensType [50] ;
+            printf("Please specify your expens type  for search: ");
+            int select ;
+            system("COLOR c");
+            printf("\n\n");
+            printf("                           \xDB\xDB\xDB\xDB\xB2 1. Clothing   ");
+            printf("\n\n");
+            printf("                           \xDB\xDB\xDB\xDB\xB2 2. Transportation   ");
+            printf("\n\n");
+            printf("                           \xDB\xDB\xDB\xDB\xB2 3. Educational expenses   ");
+            printf("\n\n");
+            printf("                           \xDB\xDB\xDB\xDB\xB2 4. Entertainment   ");
+            printf("\n\n");
+            printf("                           \xDB\xDB\xDB\xDB\xB2 5. Mobile and Internet bill   ");
+            printf("\n\n");
+            printf("                           \xDB\xDB\xDB\xDB\xB2 6. Medical expenses   ");
+            printf("\n\n");
+            printf("                           \xDB\xDB\xDB\xDB\xB2 7. Donate to charity   ");
+            printf("\n\n");
+            printf("Please enter your choice : ");
+            select = getche();
+            switch(select)
+            {
+                case '1':
+                    strcpy(expensType,"Clothing") ;
+                    break;
+                case '2':
+                    strcpy(expensType,"Transportation") ;
+                    break;
+                case '3':
+                    strcpy(expensType,"Educational expenses") ;
+                    break;
+                case '4':
+                    strcpy(expensType,"Entertainment") ;
+                    break;
+                case '5':
+                    strcpy(expensType,"Mobile and Internet bill") ;
+                    break;
+                case '6':
+                    strcpy(expensType,"Medical expenses") ;
+                    break;
+                case '7':
+                    strcpy(expensType,"Donate to charity") ;
+                    break;
+
+            }
+        printf("\nTarikh aval ra vared konid (yyyy/mm/dd) : ") ;
+        scanf("%d/%d/%d" , &startYear , &startDay , &startMonth) ;
+        printf("\nTarikh dovom ra vared konid (yyyy/mm/dd) : ");
+        scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
+        tempExp = startExp ;
+        while ( tempExp != NULL )
+        {
+            int validDate = 0 ;
+            searchYear = atoi(tempExp->year);
+            searchDay = atoi(tempExp->day);
+            searchMonth = atoi(tempExp->month);
+            validDate = checkDate (startYear ,startDay ,startMonth ,endYear ,endDay ,endMonth ,searchYear ,searchDay ,searchMonth );
+            if (validDate == 1 && strcmp(tempExp->user_login , user_given )== 0 && strcmp(tempExp->source , expensType) == 0 )
+            {
+                printf("%s+" , tempExp->amount);
+                amount = atoi(tempExp->amount) ;
+                sum = amount + sum ;
+
+            }
+
+            tempExp = tempExp->link ;
+        }
+            printf("= ");
+            printf("\n\n\nkol makharej az %s: %d" , expensType , sum ) ;
+            getchar();
+            expensesReports();
+    }
+
+    if ( choice == '4' )
+    {
+        system("cls");
+        int startYear , startDay , startMonth ;
+        int endYear , endDay , endMonth ;
+        int searchYear , searchDay , searchMonth ;
+        float amount , sum = 0 , clothing = 0 , transportation = 0 , educational = 0 , entertainment = 0 , bill = 0 , medical = 0 , charity = 0   ;
+        float sumAmount = 0 , sumClothing = 0 , sumTransportation = 0 , sumEducational = 0 , sumEntertainment = 0 , sumBill = 0 , sumMedical = 0 , sumCharity = 0 ;
+        printf("Please specify your expens type  for search: ");
+        int select ;
+        printf("\n\n");
+        printf("                           \xDB\xDB\xDB\xDB\xB2 1. All Time   ");
+        printf("\n\n");
+        printf("                           \xDB\xDB\xDB\xDB\xB2 2. between two Dates   ");
+        printf("\n\n");
+        printf("Please enter your choice : ");
+        select = getche();
+        printf("\n");
+        switch(select)
+        {
+            case '1':
+                startYear = 0 , startMonth = 0 , startDay = 0 ;
+                endYear = 9999999 , endMonth = 9999999 , endDay = 9999999 ;
+                break;
+            case '2':
+                printf("Tarikh aval ra vared konid (yyyy/mm/dd) : ") ;
+                scanf("%d/%d/%d" , &startYear , &startDay , &startMonth) ;
+                printf("\nTarikh dovom ra vared konid (yyyy/mm/dd) : ");
+                scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
+                break;
+
+        }
+        tempExp = startExp ;
+        while ( tempExp != NULL )
+        {
+            int validDate = 0 ;
+            searchYear = atoi(tempExp->year);
+            searchDay = atoi(tempExp->day);
+            searchMonth = atoi(tempExp->month);
+            validDate = checkDate (startYear ,startDay ,startMonth ,endYear ,endDay ,endMonth ,searchYear ,searchDay ,searchMonth );
+            if (validDate == 1 && strcmp(tempExp->user_login , user_given )== 0 )
+            {
+               // printf("%s+" , tempInc->amount);
+                amount = atof(tempExp->amount) ;
+                sum = amount + sum ;
+            }
+            if (validDate == 1 && strcmp(tempExp->user_login , user_given )== 0 && strcmp(tempExp->source , "Clothing") == 0  )
+            {
+              //  printf("%s+" , tempInc->amount);
+                clothing = atof(tempExp->amount) ;
+                sumClothing = clothing + sumClothing ;
+            }
+            if (validDate == 1 && strcmp(tempExp->user_login , user_given )== 0 && strcmp(tempExp->source , "Transportation") == 0  )
+            {
+               // printf("%s+" , tempInc->amount);
+                transportation = atof(tempExp->amount) ;
+                sumTransportation = transportation + sumTransportation ;
+            }
+            if (validDate == 1 && strcmp(tempExp->user_login , user_given )== 0 && strcmp(tempExp->source , "Educational expenses") == 0  )
+            {
+               // printf("%s+" , tempInc->amount);
+                educational = atof(tempExp->amount) ;
+                sumEducational = educational + sumEducational ;
+            }
+            if (validDate == 1 && strcmp(tempExp->user_login , user_given )== 0 && strcmp(tempExp->source , "Entertainment") == 0  )
+            {
+                //printf("%s+" , tempInc->amount);
+                entertainment = atof(tempExp->amount) ;
+                sumEntertainment = entertainment + sumEntertainment ;
+            }
+            if (validDate == 1 && strcmp(tempExp->user_login , user_given )== 0 && strcmp(tempExp->source , "Mobile and Internet bill") == 0  )
+            {
+                //printf("%s+" , tempInc->amount);
+                bill = atof(tempExp->amount) ;
+                sumBill = bill + sumBill ;
+            }
+
+            if (validDate == 1 && strcmp(tempExp->user_login , user_given )== 0 && strcmp(tempExp->source , "Medical expenses") == 0  )
+            {
+                //printf("%s+" , tempInc->amount);
+                medical = atof(tempExp->amount) ;
+                sumMedical = medical + sumMedical ;
+            }
+
+            if (validDate == 1 && strcmp(tempExp->user_login , user_given )== 0 && strcmp(tempExp->source , "Donate to charity") == 0  )
+            {
+                //printf("%s+" , tempInc->amount);
+                charity = atof(tempExp->amount) ;
+                sumCharity = charity + sumCharity ;
+            }
+
+
+            tempExp = tempExp->link ;
+        }
+        clothing = ( sumClothing * 100 ) / sum ;
+        transportation = ( sumTransportation * 100 ) / sum ;
+        educational = ( sumEducational * 100 ) / sum ;
+        entertainment = ( sumEntertainment * 100 ) / sum ;
+        bill = ( sumBill * 100 ) / sum ;
+        medical = ( sumMedical * 100 ) / sum ;
+        charity = ( sumCharity * 100 ) / sum ;
+        printf("clothing : %0.2f\t% " , clothing) ;
+        printf("\n");
+        printf("transportation : %0.2f\t% " , transportation) ;
+        printf("\n");
+        printf("educational : %0.2f\t% " , educational) ;
+        printf("\n");
+        printf("entertainment : %0.2f\t% " , entertainment) ;
+        printf("\n");
+        printf("bill : %0.2f\t% " , bill) ;
+        printf("\n");
+        printf("medical : %0.2f\t% " , medical) ;
+        printf("\n");
+        printf("charity : %0.2f\t% " , charity) ;
+        printf("\n");
+        getchar();
+        expensesReports();
+
+
+    }
+
+    if ( choice == '5' )
+    {
+        system("cls");
+        int startYear , startDay , startMonth ;
+        int endYear , endDay , endMonth ;
+        int searchYear , searchDay , searchMonth ;
+        printf("Please specify your expens type  for search: ");
+        int select ;
+        printf("\n\n");
+        printf("                           \xDB\xDB\xDB\xDB\xB2 1. All Time   ");
+        printf("\n\n");
+        printf("                           \xDB\xDB\xDB\xDB\xB2 2. between two Dates   ");
+        printf("\n\n");
+        printf("Please enter your choice : ");
+        select = getche();
+        printf("\n");
+        switch(select)
+        {
+            case '1':
+                startYear = 0 , startMonth = 0 , startDay = 0 ;
+                endYear = 9999999 , endMonth = 9999999 , endDay = 9999999 ;
+                break;
+            case '2':
+                printf("Tarikh aval ra vared konid (yyyy/mm/dd) : ") ;
+                scanf("%d/%d/%d" , &startYear , &startDay , &startMonth) ;
+                printf("\nTarikh dovom ra vared konid (yyyy/mm/dd) : ");
+                scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
+                break;
+
+        }
+        tempExp = startExp ;
+        printf("==========================\n");
+        while ( tempExp != NULL )
+        {
+            int validDate = 0 ;
+            searchYear = atoi(tempExp->year);
+            searchDay = atoi(tempExp->day);
+            searchMonth = atoi(tempExp->month);
+            validDate = checkDate (startYear ,startDay ,startMonth ,endYear ,endDay ,endMonth ,searchYear ,searchDay ,searchMonth );
+            if (validDate == 1 && strcmp(tempExp->user_login , user_given )== 0 )
+            {
+                printf("Amount : %s\n" , tempExp->amount);
+                printf("source : %s\n" , tempExp->source);
+                printf("Date : %s/%s/%s\n" , tempExp->year , tempExp->month , tempExp->day);
+                printf("description : %s\n" , tempExp->description);
+                printf("==========================\n");
+            }
+
+            tempExp = tempExp->link ;
+        }
+
+            getchar();
+            expensesReports();
+
+    }
+    if ( choice == '6' )
+    {
+        system("cls");
+        int startYear , startDay , startMonth ;
+        int endYear , endDay , endMonth ;
+        int searchYear , searchDay , searchMonth ;
+        int maxAmount = 0 , amount ;
+        printf("Please specify your expens type  for search: ") ;
+        int select ;
+        printf("\n\n");
+        printf("                           \xDB\xDB\xDB\xDB\xB2 1. All Time   ");
+        printf("\n\n");
+        printf("                           \xDB\xDB\xDB\xDB\xB2 2. between two Dates   ");
+        printf("\n\n");
+        printf("Please enter your choice : ");
+        select = getche();
+        printf("\n");
+        switch(select)
+        {
+            case '1':
+                startYear = 0 , startMonth = 0 , startDay = 0 ;
+                endYear = 9999999 , endMonth = 9999999 , endDay = 9999999 ;
+                break;
+            case '2':
+                printf("Tarikh aval ra vared konid (yyyy/mm/dd) : ") ;
+                scanf("%d/%d/%d" , &startYear , &startDay , &startMonth) ;
+                printf("\nTarikh dovom ra vared konid (yyyy/mm/dd) : ");
+                scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
+                break;
+
+        }
+        tempExp = startExp ;
+        while ( tempExp != NULL )
+        {
+            int validDate = 0 ;
+            searchYear = atoi(tempExp->year);
+            searchDay = atoi(tempExp->day);
+            searchMonth = atoi(tempExp->month);
+            validDate = checkDate (startYear ,startDay ,startMonth ,endYear ,endDay ,endMonth ,searchYear ,searchDay ,searchMonth );
+            if (validDate == 1 && strcmp(tempExp->user_login , user_given )== 0 )
+            {
+                amount = atoi(tempExp->amount) ;
+                if (amount >= maxAmount )
+                    maxAmount = amount ;
+            }
+
+            tempExp = tempExp->link ;
+        }
+        printf("\nthe largest amount is :  %d\n" , maxAmount );
+        getchar();
+        expensesReports();
+
+    }
+
+    if (choice == '7')
+    {
+
+
+
+
+
+
+
+
+
+    }
+
+
+    if (choice == '8')
+    {
+        system("cls") ;
+        main_menu () ;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 int checkDate (int startYear , int startDay ,int startMonth ,int endYear ,int endDay ,int endMonth ,int searchYear ,int searchDay ,int searchMonth )
 {
