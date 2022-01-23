@@ -709,7 +709,7 @@ void statistics ()
         case '3':
             system("COLOR b");
             system("cls");
-            statistics();
+            balanceReports();
             break;
         case '4':
             system("COLOR b");
@@ -1936,16 +1936,6 @@ void expensesReports ()
 
 
 
-
-
-
-
-
-
-
-
-
-
 int checkDate (int startYear , int startDay ,int startMonth ,int endYear ,int endDay ,int endMonth ,int searchYear ,int searchDay ,int searchMonth )
 {
     int valid = 0 ;
@@ -2049,6 +2039,272 @@ int checkDate (int startYear , int startDay ,int startMonth ,int endYear ,int en
             }
 
             return valid ;
+
+}
+
+void balanceReports ()
+{
+    incomeLinkedList();
+    expensesLinkedList();
+    int choice ;
+    system("COLOR c");
+    printf("\n\n");
+	printf("                           \xDB\xDB\xDB\xDB\xB2 1. Current account balance   ");
+	printf("\n\n");
+	printf("                           \xDB\xDB\xDB\xDB\xB2 2. Specified year account balance  ");
+	printf("\n\n");
+	printf("                           \xDB\xDB\xDB\xDB\xB2 3. Account balance for a period of time  ");
+	printf("\n\n");
+	printf("                           \xDB\xDB\xDB\xDB\xB2 4. Micro-balance of a period of time   ");
+	printf("\n\n");
+    printf("                           \xDB\xDB\xDB\xDB\xB2 5. Main Menu    ");
+	printf("\n\n");
+	printf("Please enter your choice : ");
+	choice = getche();
+	printf("\n");
+
+	if (choice == '1')
+    {
+        int incomeAmount , incomeSum = 0 , expensAmount , expensSum = 0 ;
+        int net ;
+        // sum income
+        printf("incomes : \n");
+        tempInc = startInc ;
+        while ( tempInc != NULL )
+        {
+            if( strcmp(tempInc->user_login , user_given )== 0  )
+            {
+                printf("%s+" , tempInc->amount);
+                incomeAmount = atoi(tempInc->amount) ;
+                incomeSum = incomeAmount + incomeSum ;
+            }
+            tempInc = tempInc->link ;
+        }
+        // sum expens
+        printf("\n=============\n");
+        printf("expenses : \n");
+        tempExp = startExp ;
+        while ( tempExp != NULL )
+        {
+            if( strcmp(tempExp->user_login , user_given )== 0  )
+            {
+                printf("%s+" , tempExp->amount);
+                expensAmount = atoi(tempExp->amount) ;
+                expensSum = expensAmount + expensSum ;
+            }
+            tempExp = tempExp->link ;
+        }
+        net = incomeSum - expensSum ;
+        printf("\nThe Current account balance is %d " , net  ) ;
+        balanceReports();
+
+
+
+
+    }
+
+
+
+
+    if ( choice == '2')
+    {
+        int incomeAmount , incomeSum = 0 , expensAmount , expensSum = 0 ;
+        int net  , year , search ;
+        printf("Please enter the desired year : ") ;
+        scanf("%d" , &year );
+        // sum income
+        printf("incomes for %d : \n", year);
+        tempInc = startInc ;
+        while ( tempInc != NULL )
+        {
+            search = atoi(tempInc-> year) ;
+            if( search == year && strcmp(tempInc->user_login , user_given )== 0  )
+            {
+                printf("%s+" , tempInc->amount);
+                incomeAmount = atoi(tempInc->amount) ;
+                incomeSum = incomeAmount + incomeSum ;
+            }
+            tempInc = tempInc->link ;
+        }
+        // sum expens
+        printf("\n=============\n");
+        printf("expenses for %d : \n" , year );
+        tempExp = startExp ;
+        while ( tempExp != NULL )
+        {
+            search = atoi(tempExp-> year) ;
+            if( search == year && strcmp(tempExp->user_login , user_given )== 0  )
+            {
+                printf("%s+" , tempExp->amount);
+                expensAmount = atoi(tempExp->amount) ;
+                expensSum = expensAmount + expensSum ;
+            }
+            tempExp = tempExp->link ;
+        }
+        net = incomeSum - expensSum ;
+        printf("\nThe Current account balance for %d is %d " , year, net ) ;
+        balanceReports();
+
+
+    }
+
+
+
+    if (choice == '3')
+    {
+        system("cls");
+        int startYear , startDay , startMonth ;
+        int endYear , endDay , endMonth ;
+        int searchYear , searchDay , searchMonth ;
+        int incomeAmount , incomeSum = 0 , expensAmount , expensSum = 0 ;
+        int net ;
+        printf("Please enter the start date(yyyy/mm/dd) : ") ;
+        scanf("%d/%d/%d" , &startYear , &startDay , &startMonth) ;
+        printf("\nPlease enter the end date(yyyy/mm/dd) : ");
+        scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
+        // sum income
+        printf("incomes : \n");
+        tempInc = startInc ;
+        while ( tempInc != NULL )
+        {
+            int validDate = 0 ;
+            searchYear = atoi(tempInc->year);
+            searchDay = atoi(tempInc->day);
+            searchMonth = atoi(tempInc->month);
+            validDate = checkDate (startYear ,startDay ,startMonth ,endYear ,endDay ,endMonth ,searchYear ,searchDay ,searchMonth );
+            if( validDate == 1 && strcmp(tempInc->user_login , user_given )== 0  )
+            {
+                printf("%s+" , tempInc->amount);
+                incomeAmount = atoi(tempInc->amount) ;
+                incomeSum = incomeAmount + incomeSum ;
+            }
+            tempInc = tempInc->link ;
+        }
+
+        // sum expens
+        printf("\n=============\n");
+        printf("expenses : \n" );
+        tempExp = startExp ;
+        while ( tempExp != NULL )
+        {
+            int validDate = 0 ;
+            searchYear = atoi(tempExp->year);
+            searchDay = atoi(tempExp->day);
+            searchMonth = atoi(tempExp->month);
+            validDate = checkDate (startYear ,startDay ,startMonth ,endYear ,endDay ,endMonth ,searchYear ,searchDay ,searchMonth );
+            if( validDate == 1 && strcmp(tempExp->user_login , user_given )== 0  )
+            {
+                printf("%s+" , tempExp->amount);
+                expensAmount = atoi(tempExp->amount) ;
+                expensSum = expensAmount + expensSum ;
+            }
+            tempExp = tempExp->link ;
+        }
+        net = incomeSum - expensSum ;
+        printf("\nThe account balance is : %d " , net ) ;
+        balanceReports();
+
+
+
+    }
+    if ( choice == '4' )
+    {
+        system("cls");
+        int startYear , startDay , startMonth ;
+        int endYear , endDay , endMonth ;
+        int searchYear , searchDay , searchMonth ;
+        int incomeAmount , incomeSum = 0 , expensAmount , expensSum = 0 ;
+        int net ;
+        printf("Please specify your expens type  for search: ");
+        int select ;
+        printf("\n\n");
+        printf("                           \xDB\xDB\xDB\xDB\xB2 1. All Time   ");
+        printf("\n\n");
+        printf("                           \xDB\xDB\xDB\xDB\xB2 2. between two Dates   ");
+        printf("\n\n");
+        printf("Please enter your choice : ");
+        select = getche();
+        printf("\n");
+        switch(select)
+        {
+            case '1':
+                startYear = 0 , startMonth = 0 , startDay = 0 ;
+                endYear = 9999999 , endMonth = 9999999 , endDay = 9999999 ;
+                break;
+            case '2':
+                printf("Tarikh aval ra vared konid (yyyy/mm/dd) : ") ;
+                scanf("%d/%d/%d" , &startYear , &startDay , &startMonth) ;
+                printf("\nTarikh dovom ra vared konid (yyyy/mm/dd) : ");
+                scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
+                break;
+
+        }
+        // sum income
+        printf("incomes : \n");
+        tempInc = startInc ;
+        while ( tempInc != NULL )
+        {
+            int validDate = 0 ;
+            searchYear = atoi(tempInc->year);
+            searchDay = atoi(tempInc->day);
+            searchMonth = atoi(tempInc->month);
+            validDate = checkDate (startYear ,startDay ,startMonth ,endYear ,endDay ,endMonth ,searchYear ,searchDay ,searchMonth );
+            if( validDate == 1 && strcmp(tempInc->user_login , user_given )== 0  )
+            {
+                printf("Amount : %s\n" , tempInc->amount);
+                printf("source : %s\n" , tempInc->source);
+                printf("Date : %s/%s/%s\n" , tempInc->year , tempInc->month , tempInc->day);
+                printf("description : %s\n" , tempInc->description);
+                printf("==========================\n");
+                incomeAmount = atoi(tempInc->amount) ;
+                incomeSum = incomeAmount + incomeSum ;
+            }
+            tempInc = tempInc->link ;
+        }
+
+        // sum expens
+        printf("\n=============\n");
+        printf("expenses : \n" );
+        tempExp = startExp ;
+        while ( tempExp != NULL )
+        {
+            int validDate = 0 ;
+            searchYear = atoi(tempExp->year);
+            searchDay = atoi(tempExp->day);
+            searchMonth = atoi(tempExp->month);
+            validDate = checkDate (startYear ,startDay ,startMonth ,endYear ,endDay ,endMonth ,searchYear ,searchDay ,searchMonth );
+            if( validDate == 1 && strcmp(tempExp->user_login , user_given )== 0  )
+            {
+                printf("Amount : %s\n" , tempExp->amount);
+                printf("source : %s\n" , tempExp->source);
+                printf("Date : %s/%s/%s\n" , tempExp->year , tempExp->month , tempExp->day);
+                printf("description : %s\n" , tempExp->description);
+                printf("==========================\n");
+                expensAmount = atoi(tempExp->amount) ;
+                expensSum = expensAmount + expensSum ;
+            }
+            tempExp = tempExp->link ;
+        }
+        net = incomeSum - expensSum ;
+        printf("\nThe account balance is : %d " , net ) ;
+        balanceReports();
+
+
+    }
+
+
+
+
+
+
+    if ( choice == '5' )
+    {
+        system("cls") ;
+        main_menu ();
+    }
+
+
+
 
 }
 
