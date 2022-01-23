@@ -543,8 +543,9 @@ void income()
             scanf("%s", &inc.month );
             printf("Year : ");
             scanf("%s", &inc.year );
+            fflush(stdin);
             printf("Please enter description : ");
-            scanf("%s" , inc.description);
+            gets(inc.description);
             printf("\n Done!");
             strcpy(inc.user_login , user_given) ;
 
@@ -648,8 +649,9 @@ void expenses ()
             scanf("%s", &exp.month );
             printf("Year : ");
             scanf("%s", &exp.year );
+            fflush(stdin);
             printf("Please enter description : ");
-            scanf("%s" , &exp.description);
+            gets(exp.description) ;
             printf("\n Done!");
             strcpy(exp.user_login , user_given) ;
 
@@ -785,21 +787,28 @@ void settings ()
 {
     char choice ;
     printf("Hello %s \n " , user_given ) ;
-    printf("Do you want edit your profile ? Y/N : ") ;
+    printf("Do you want to edit your profile ? Y/N : ") ;
     choice = getch();
     choice=toupper(choice);
     if (choice ==  'Y')
     {
-        FILE *fp ;
-        fp = fopen("profiles.txt" , "r+") ;
-        if (fp == NULL )
+        FILE *fp , *newRec  ;
+        fp = fopen("profiles.txt" , "r") ;
+        newRec = fopen("temp.txt", "w" ) ;
+
+        if (fp == NULL  || newRec == NULL )
         {
             printf("File could not be opened");
 
         }
+
         // get user data
         else
         {
+            while (fread(&std,sizeof(struct sign_up) , 1 , fp )== 1)
+            {
+                fwrite(&std,sizeof(struct sign_up) , 1 , newRec ) ;
+            }
             do
             {
                 printf("First name : ");
@@ -866,12 +875,14 @@ void settings ()
                 scanf("%s", &std.password);
             } while (check_pass(std.password) == 0 ) ;
 
-            fseek(fp,-sizeof(struct sign_up),SEEK_CUR);
-			fwrite(&std,sizeof(struct sign_up) , 1 , fp ) ;
-			fflush(stdin);
+            //fseek(fp,-sizeof(struct sign_up),SEEK_CUR);
+			fwrite(&std,sizeof(struct sign_up) , 1 , newRec ) ;
 			fclose(fp);
-			system("cls");
-			printf("\nSuccessfully edited.\n");
+			fclose(newRec);
+			//system("cls");
+			remove("profiles.txt") ;
+			rename("temp.txt" ,"profiles.txt") ;
+			printf("\nSuccessfully edited.\n") ;
         }
 
     }
@@ -1363,16 +1374,72 @@ void incomeReports()
 
     if (choice == '7')
     {
+        system("cls");
+        int startYear , startDay , startMonth ;
+        int endYear , endDay , endMonth ;
+        int searchYear , searchDay , searchMonth ;
+        printf("Please specify your income type  for search: ");
+        int select ;
+        printf("\n\n");
+        printf("                           \xDB\xDB\xDB\xDB\xB2 1. All Time   ");
+        printf("\n\n");
+        printf("                           \xDB\xDB\xDB\xDB\xB2 2. between two Dates   ");
+        printf("\n\n");
+        printf("Please enter your choice : ");
+        select = getche();
+        printf("\n");
+        switch(select)
+        {
+            case '1':
+                startYear = 0 , startMonth = 0 , startDay = 0 ;
+                endYear = 9999999 , endMonth = 9999999 , endDay = 9999999 ;
+                break;
+            case '2':
+                printf("Tarikh aval ra vared konid (yyyy/mm/dd) : ") ;
+                scanf("%d/%d/%d" , &startYear , &startDay , &startMonth) ;
+                printf("\nTarikh dovom ra vared konid (yyyy/mm/dd) : ");
+                scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
+                break;
 
+        }
+        fflush(stdin);
+        char wordSearch [50];
+        char *result ;
+        printf("\nPlease enter your word for search in description : ");
+        gets(wordSearch);
+        tempInc = startInc ;
+        printf("==========================\n");
+        while ( tempInc != NULL )
+        {
+            result = strstr(tempInc->description,wordSearch) ;
+            int validDate = 0 ;
+            searchYear = atoi(tempInc->year);
+            searchDay = atoi(tempInc->day);
+            searchMonth = atoi(tempInc->month);
+            validDate = checkDate (startYear ,startDay ,startMonth ,endYear ,endDay ,endMonth ,searchYear ,searchDay ,searchMonth );
+            if (validDate == 1 && strcmp(tempInc->user_login , user_given )== 0 && result != NULL )
+            {
+                printf("Amount : %s\n" , tempInc->amount);
+                printf("source : %s\n" , tempInc->source);
+                printf("Date : %s/%s/%s\n" , tempInc->year , tempInc->month , tempInc->day);
+                printf("description : %s\n" , tempInc->description);
+                printf("==========================\n");
+            }
 
+            tempInc = tempInc->link ;
+            }
 
+        if (result == 0 )
+            {
+                printf("The word is not found in description");
 
+            }
 
-
-
-
+        getchar();
+        incomeReports();
 
     }
+
 
 
     if (choice == '8')
@@ -1380,9 +1447,6 @@ void incomeReports()
         system("cls") ;
         main_menu () ;
     }
-
-
-
 
 
 
@@ -1791,12 +1855,69 @@ void expensesReports ()
 
     if (choice == '7')
     {
+        system("cls");
+        int startYear , startDay , startMonth ;
+        int endYear , endDay , endMonth ;
+        int searchYear , searchDay , searchMonth ;
+        printf("Please specify your expens type  for search: ");
+        int select ;
+        printf("\n\n");
+        printf("                           \xDB\xDB\xDB\xDB\xB2 1. All Time   ");
+        printf("\n\n");
+        printf("                           \xDB\xDB\xDB\xDB\xB2 2. between two Dates   ");
+        printf("\n\n");
+        printf("Please enter your choice : ");
+        select = getche();
+        printf("\n");
+        switch(select)
+        {
+            case '1':
+                startYear = 0 , startMonth = 0 , startDay = 0 ;
+                endYear = 9999999 , endMonth = 9999999 , endDay = 9999999 ;
+                break;
+            case '2':
+                printf("Tarikh aval ra vared konid (yyyy/mm/dd) : ") ;
+                scanf("%d/%d/%d" , &startYear , &startDay , &startMonth) ;
+                printf("\nTarikh dovom ra vared konid (yyyy/mm/dd) : ");
+                scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
+                break;
 
+        }
+        fflush(stdin);
+        char wordSearch [50];
+        char *result ;
+        printf("\nPlease enter your word for search in description : ");
+        gets(wordSearch);
+        tempExp = startExp ;
+        printf("==========================\n");
+        while ( tempExp != NULL )
+        {
+            result = strstr(tempExp->description,wordSearch) ;
+            int validDate = 0 ;
+            searchYear = atoi(tempExp->year);
+            searchDay = atoi(tempExp->day);
+            searchMonth = atoi(tempExp->month);
+            validDate = checkDate (startYear ,startDay ,startMonth ,endYear ,endDay ,endMonth ,searchYear ,searchDay ,searchMonth );
+            if (validDate == 1 && strcmp(tempExp->user_login , user_given )== 0 && result != NULL )
+            {
+                printf("Amount : %s\n" , tempExp->amount);
+                printf("source : %s\n" , tempExp->source);
+                printf("Date : %s/%s/%s\n" , tempExp->year , tempExp->month , tempExp->day);
+                printf("description : %s\n" , tempExp->description);
+                printf("==========================\n");
+            }
 
+            tempExp = tempExp->link ;
+            }
 
+        if (result == 0 )
+            {
+                printf("The word is not found in description");
 
+            }
 
-
+        getchar();
+        expensesReports();
 
 
 
@@ -1808,17 +1929,6 @@ void expensesReports ()
         system("cls") ;
         main_menu () ;
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
