@@ -805,10 +805,12 @@ void settings ()
         // get user data
         else
         {
-            while (fread(&std,sizeof(struct sign_up) , 1 , fp )== 1)
+            while(fread(&std,sizeof(struct sign_up) , 1 , fp )== 1)
             {
-                fwrite(&std,sizeof(struct sign_up) , 1 , newRec ) ;
-            }
+                if ( strcmp (std.username,user_given)==0 )
+                {
+
+
             do
             {
                 printf("First name : ");
@@ -859,7 +861,7 @@ void settings ()
                 scanf("%s", &std.mail);
             } while (check_email(std.mail) == 0 ) ;
 
-            do
+          /*  do
             {
                 printf("username : ");
                 scanf("%s", &std.username);
@@ -867,13 +869,34 @@ void settings ()
                     printf("Username must be more than 2 character \n") ;
             // if (unique_username(std.username) == 1)
                 // printf("Username Already in use ! \n");
-            } while (strlen(std.username) <= 2 ); //  || unique_username(std.username) == 1 )  ;
+            } while (strlen(std.username) <= 2 ); //  || unique_username(std.username) == 1 )  ; */
+            strcpy(std.username , user_given ) ;
 
             do
             {
                 printf("password : ");
                 scanf("%s", &std.password);
             } while (check_pass(std.password) == 0 ) ;
+
+                }
+            fwrite(&std , sizeof (struct sign_up) , 1 , newRec );
+
+            }
+
+            fclose(fp);
+            fclose(newRec);
+
+            fp = fopen("profiles.txt" , "w") ;
+            newRec = fopen("temp.txt", "r" ) ;
+            while (fread(&std,sizeof(struct sign_up) , 1 , newRec )== 1)
+            {
+                fwrite(&std,sizeof(struct sign_up) , 1 , fp ) ;
+            }
+            fclose(fp);
+            fclose(newRec);
+            printf("\nSuccessfully edited.\n") ;
+
+           /*
 
             //fseek(fp,-sizeof(struct sign_up),SEEK_CUR);
 			fwrite(&std,sizeof(struct sign_up) , 1 , newRec ) ;
@@ -882,7 +905,8 @@ void settings ()
 			//system("cls");
 			remove("profiles.txt") ;
 			rename("temp.txt" ,"profiles.txt") ;
-			printf("\nSuccessfully edited.\n") ;
+			printf("\nSuccessfully edited.\n") ; */
+
         }
 
     }
