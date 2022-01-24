@@ -7,6 +7,7 @@
 #include<time.h>
 #include<ctype.h>
 #include<dos.h>
+int  attempts = 0 ;
 char user_given [50];
 struct sign_up {
 
@@ -287,9 +288,18 @@ void signup ()
 }
 void login ()
 {
+    printf("\n\n\n");
+    printf("\n                              *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+    printf("\n                              *                                                 *     ");
+    printf("\n                              *                                                 *     ");
+    printf("\n                              *                   login menu                    *     ");
+    printf("\n                              *                                                 *     ");
+    printf("\n                              *                                                 *     ");
+    printf("\n                              *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+
     char pass_given [50] , c = ' ';
-    int i = 0 ;
-    printf("Please enter your username: ");
+    int i = 0  , j = 0 ;
+    printf("\n\n\n                           \xDB\xDB\xDB\xDB\xB2 Please enter your username: ");
     scanf("%s",&user_given);
     FILE *fp ;
     fp = fopen("profiles.txt" , "r") ;
@@ -300,12 +310,33 @@ void login ()
     }
     else
     {
+        if( attempts >= 5  )
+        {
+            printf("Sorry, only allowed 5 attempts.\n ");
+            Sleep(3000);
+            for (j = 0 ; j <= 900 ; j++)
+            {
+                printf("\n \xDB\xDB\xDB\xDB\xB2 You can retry after 15 min (900 Sec). \n");
+
+                printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+                printf("\n                          *                                                 *     ");
+                printf("\n                          *                                                 *     ");
+                printf("\n                          *                       %d Sec                    * ",j);
+                printf("\n                          *                                                 *     ");
+                printf("\n                          *                                                 *     ");
+                printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+                Sleep(1000);
+                system("cls");
+
+            }
+
+        }
 
         while (fread(&std,sizeof(struct sign_up) , 1 , fp )== 1)
         {
             if (strcmp(user_given,std.username) == 0) // check username
             {
-                printf("Please enter your password : "); //get password
+                printf("\n                           \xDB\xDB\xDB\xDB\xB2 Please enter your password : "); //get password
                 while (i<50) // print * instead paswword
                 {
                     pass_given[i] = getch();
@@ -318,9 +349,10 @@ void login ()
                 pass_given[i] = '\0';
                 i = 0;
                 if (strcmp(pass_given,std.password) == 0)
+
                 {
-                    printf("\nWellcome");
-                    Sleep(2000);
+                    printf("\n\n\n                              \xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2 Welcome %s \xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2" , user_given );
+                    Sleep(4000);
                     system("cls");
                     main_menu();
 
@@ -331,14 +363,25 @@ void login ()
                 {
                     //printf("\npassword incorrect");
                     MessageBox(0,"Password incorrect!\nPlease Try again!","Error!!",0);
+                    attempts++ ;
                     system("cls");
                     login();
                     break;
+
+
                 }
+
             }
 
         }
-        fclose(fp);
+        if (strcmp(user_given,std.username) != 0 )
+        {
+            MessageBox(0,"User not found!\nPlease Try again!","Error!!",0);
+            attempts++;
+            login();
+        }
+
+    fclose(fp);
 
     }
 
