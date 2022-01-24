@@ -81,8 +81,8 @@ void main ()
 	printf("\n\n");
 	printf("                           \xDB\xDB\xDB\xDB\xB2 3. Exit   ");
 	printf("\n\n");
-	printf("Please enter your choice : ");
-	choice = getch();
+	printf("                           \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
+	choice = getche();
 	choice=toupper(choice);
 	switch(choice)
 	{
@@ -106,7 +106,7 @@ void main ()
             printf("\n                          *                                                 *     ");
             printf("\n                          *                                                 *     ");
             printf("\n                          *                                                 *     ");
-            printf("\n                          *         | Thank You For using the app |         *     ");
+            printf("\n                          *      | Thank You For using this Soft-ware |     *     ");
             printf("\n                          *                                                 *     ");
             printf("\n                          *                                                 *     ");
             printf("\n                          *                                                 *     ");
@@ -279,6 +279,7 @@ void signup ()
             case 'N' :
                 system("cls");
                 main();
+                break ;
             default :
                 system("cls");
                 main();
@@ -351,7 +352,7 @@ void login ()
                 if (strcmp(pass_given,std.password) == 0)
 
                 {
-                    printf("\n\n\n                              \xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2 Welcome %s \xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2" , user_given );
+                    printf("\n\n\n                           \xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2 Welcome %s \xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2" , user_given );
                     Sleep(4000);
                     system("cls");
                     main_menu();
@@ -390,22 +391,25 @@ void login ()
 void main_menu ()
 {
     int choice ;
-    system("COLOR c");
-    printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 1. Income   ");
-	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 2. expenses   ");
-	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 3. Statistics   ");
-	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 4. Settings   ");
-	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 5. Sign Out   ");
-	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 5. Exit   ");
-	printf("\n\n");
-	printf("Please enter your choice : ");
-	choice = getch();
+    system("COLOR a");
+    printf("\n");
+    printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+    printf("\n                          *                                                 *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 1. Add Incomes                           *     ");
+    printf("\n                          *                                                 *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 2. Add expenses                          *     ");
+    printf("\n                          *                                                 *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 3. Statistics                            *     ");
+    printf("\n                          *                                                 *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 4. Settings                              *     ");
+    printf("\n                          *                                                 *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 5. Sign Out                              *     ");
+    printf("\n                          *                                                 *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 6. Exit                                  *     ");
+    printf("\n                          *                                                 *     ");
+    printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+	printf("\n\n\n                          \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
+	choice = getche();
 	choice=toupper(choice);
 	switch(choice)
 	{
@@ -432,7 +436,7 @@ void main_menu ()
         case '5':
             system("COLOR b");
             system("cls");
-            login ();
+            main ();
             break;
         case '6':
             system("COLOR b");
@@ -444,7 +448,7 @@ void main_menu ()
             printf("\n                          *                                                 *     ");
             printf("\n                          *                                                 *     ");
             printf("\n                          *                                                 *     ");
-            printf("\n                          *         | Thank You For using the app |         *     ");
+            printf("\n                          *      | Thank You For using this Soft-ware |     *     ");
             printf("\n                          *                                                 *     ");
             printf("\n                          *                                                 *     ");
             printf("\n                          *                                                 *     ");
@@ -454,18 +458,16 @@ void main_menu ()
             Sleep(3000);
             exit(0);
             break;
-
-
+        default :
+            MessageBox(0,"Enter Valid Number!\nPlease Try again!","Error!!",0);
+            system("cls");
+            main_menu();
+            break ;
 
     }
-    	/*if ( choice != 6 || choice != 5 || choice != 4 || choice != 3 || choice != 2 || choice != 1 || choice != 0x0A )
-    {
-                    MessageBox(0,"Enter Valid Number!\nPlease Try again!","Error!!",0);
-                    system("cls");
-                    main_menu();
 
-    } */
 }
+
 int check_chracter  ( char name[50] )    //this function check string is alphabet , for alphabet return 1
 {
     int i , contain , sum= 0  ;
@@ -616,7 +618,7 @@ void income()
     char choice ;
     FILE *fp ;
     fp = fopen("income.txt" , "a+") ;
-    printf("Hello %s\n" , user_given );
+    printf("                          \xDB\xDB\xDB\xDB\xB2 Hello %s!\n\n" , user_given );
     if (fp == NULL )
     {
         printf("File could not be opened");
@@ -624,20 +626,23 @@ void income()
     }
         else
         {
-            printf("Please specify your income type : ");
-            int choice ;
             system("COLOR c");
-            printf("\n\n");
-            printf("                           \xDB\xDB\xDB\xDB\xB2 1. Programming Salary   ");
-            printf("\n\n");
-            printf("                           \xDB\xDB\xDB\xDB\xB2 2. YARANEH   ");
-            printf("\n\n");
-            printf("                           \xDB\xDB\xDB\xDB\xB2 3. Pocket money   ");
-            printf("\n\n");
-            printf("                           \xDB\xDB\xDB\xDB\xB2 4. University grant   ");
-            printf("\n\n");
-            printf("Please enter your choice : ");
-            choice = getch();
+            printf("                          \xDB\xDB\xDB\xDB\xB2 Please specify your income type : \n\n");
+            int choice ;
+            printf("\n");
+            printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 1. Programming Salary                    *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 2. YARANEH                               *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 3. Pocket money                          *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 4. University grant                      *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+            printf("\n\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
+            choice = getche();
             choice=toupper(choice);
             switch(choice)
             {
@@ -653,52 +658,81 @@ void income()
                 case '4':
                     strcpy(inc.source,"University grant") ;
                     break;
+                default :
+                    MessageBox(0,"Enter Valid Number!\nPlease Try again!","Error!!",0);
+                    system("cls");
+                    income();
+                    break ;
+
 
             }
             printf("\n");
             do
             {
-                printf("Please specify the amount of income : ");
+                printf("\n                     \xDB\xDB\xDB\xDB\xB2 Please specify the amount of income : ");
                 scanf("%s",&inc.amount);
                 if (strlen(inc.amount) <= 2)
-                    printf("amount must be more than 2 digit\n");
+                    printf("                     \xDB\xDB\xDB\xDB\xB2 amount must be more than 2 digit\n");
                 if (check_digit(inc.amount) == 0)
-                    printf("Just digit allowed \n");
+                    printf("                     \xDB\xDB\xDB\xDB\xB2 Just digit allowed \n");
 
             } while(check_digit(inc.amount) == 0 || strlen(inc.amount) <= 2 );
 
-            printf("Please specify the date of income : \n");
-            printf("Day : ");
-            scanf("%s" ,&inc.day );
-            printf("Month :");
-            scanf("%s", &inc.month );
-            printf("Year : ");
+            printf("\n                     \xDB\xDB\xDB\xDB\xB2 Please specify the date of income : ");
+            do
+            {
+                printf("   \xB2\xB2\xB2\xB2\xB2 Day : ");
+                scanf("%s" ,&inc.day );
+                if (check_digit(inc.day) == 0)
+                    printf("                                                                  \xB2\xB2\xB2\xB2\xB2 Just digit allowed \n");
+            } while(check_digit(inc.day) == 0 ) ;
+
+            do
+            {
+                printf("                                                                  \xB2\xB2\xB2\xB2\xB2 Month : ");
+                scanf("%s", &inc.month );
+                if (check_digit(inc.month) == 0)
+                printf("                                                                  \xB2\xB2\xB2\xB2\xB2 Just digit allowed \n");
+
+            } while(check_digit(inc.month) == 0 ) ;
+
+            do
+            {
+            printf("                                                                  \xB2\xB2\xB2\xB2\xB2 Year : ");
             scanf("%s", &inc.year );
+            if (check_digit(inc.year) == 0)
+            printf("                                                                  \xB2\xB2\xB2\xB2\xB2 Just digit allowed \n");
+            } while(check_digit(inc.year) == 0 ) ;
+
             fflush(stdin);
-            printf("Please enter description : ");
+            printf("\n                     \xDB\xDB\xDB\xDB\xB2 Please enter description : ");
             gets(inc.description);
-            printf("\n Done!");
+            printf("\n\n                        \xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2 All Done ! \xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
             strcpy(inc.user_login , user_given) ;
 
             fwrite(&inc , sizeof(struct add_income) ,1 ,fp) ;
             fclose(fp);
 
         }
-    printf("\nDo you want to enter another Record ? y / n ") ;
-	choice = getch();
+    printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 Do you want to enter another Record ? [y/n] ") ;
+	choice = getche();
 	choice=toupper(choice);
-    if ( choice == 'Y')
+    choice=toupper(choice);
+    switch (choice)
     {
-        system("cls");
-        income();
-    }
-        else
-        {
+        case 'Y' :
+            system("cls");
+            income();
+            break ;
+        case 'N' :
             system("cls");
             main_menu();
+            break;
+        default :
+            system("cls");
+            main_menu();
+            break ;
         }
-
-
 
 }
 
