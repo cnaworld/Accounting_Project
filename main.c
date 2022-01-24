@@ -717,7 +717,6 @@ void income()
     printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 Do you want to enter another Record ? [y/n] ") ;
 	choice = getche();
 	choice=toupper(choice);
-    choice=toupper(choice);
     switch (choice)
     {
         case 'Y' :
@@ -741,7 +740,7 @@ void expenses ()
     char choice ;
     FILE *fp ;
     fp = fopen("expenses.txt" , "a+") ;
-    printf("Hello %s\n" , user_given );
+    printf("                          \xDB\xDB\xDB\xDB\xB2 Hello %s!\n\n" , user_given );
     if (fp == NULL )
     {
         printf("File could not be opened");
@@ -749,26 +748,29 @@ void expenses ()
     }
         else
         {
-            printf("Please specify your expenses type : ");
-            int choice ;
             system("COLOR c");
-            printf("\n\n");
-            printf("                           \xDB\xDB\xDB\xDB\xB2 1. Clothing   ");
-            printf("\n\n");
-            printf("                           \xDB\xDB\xDB\xDB\xB2 2. Transportation   ");
-            printf("\n\n");
-            printf("                           \xDB\xDB\xDB\xDB\xB2 3. Educational expenses   ");
-            printf("\n\n");
-            printf("                           \xDB\xDB\xDB\xDB\xB2 4. Entertainment   ");
-            printf("\n\n");
-            printf("                           \xDB\xDB\xDB\xDB\xB2 5. Mobile and Internet bill   ");
-            printf("\n\n");
-            printf("                           \xDB\xDB\xDB\xDB\xB2 6. Medical expenses   ");
-            printf("\n\n");
-            printf("                           \xDB\xDB\xDB\xDB\xB2 7. Donate to charity   ");
-            printf("\n\n");
-            printf("Please enter your choice : ");
-            choice = getch();
+            printf("                          \xDB\xDB\xDB\xDB\xB2 Please specify your expens type : \n\n");
+            int choice ;
+            printf("\n");
+            printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 1. Clothing                              *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 2. Transportation                        *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 3. Educational expenses                  *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 4. Entertainment                         *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 5. Mobile and Internet bill              *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 6. Medical expenses                      *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 7. Donate to charity                     *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+            printf("\n\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
+            choice = getche();
             choice=toupper(choice);
             switch(choice)
             {
@@ -793,49 +795,79 @@ void expenses ()
                 case '7':
                     strcpy(exp.source,"Donate to charity") ;
                     break;
+                default :
+                    MessageBox(0,"Enter Valid Number!\nPlease Try again!","Error!!",0);
+                    system("cls");
+                    expenses();
+                    break ;
 
             }
             printf("\n");
             do
             {
-                printf("Please specify the amount of expenses : ");
+                printf("\n                     \xDB\xDB\xDB\xDB\xB2 Please specify the amount of expens : ");
                 scanf("%s",&exp.amount);
                 if (strlen(exp.amount) <= 2)
-                    printf("amount must be more than 2 digit\n");
+                    printf("                     \xDB\xDB\xDB\xDB\xB2 amount must be more than 2 digit\n");
                 if (check_digit(exp.amount) == 0)
-                    printf("Just digit allowed \n");
+                    printf("                     \xDB\xDB\xDB\xDB\xB2 Just digit allowed \n");
 
             } while(check_digit(exp.amount) == 0 || strlen(exp.amount) <= 2 );
 
-            printf("Please specify the date of income : \n");
-            printf("Day : ");
-            scanf("%s" ,&exp.day );
-            printf("Month :");
-            scanf("%s", &exp.month );
-            printf("Year : ");
+            printf("\n                     \xDB\xDB\xDB\xDB\xB2 Please specify the date of expens : ");
+            do
+            {
+                printf("   \xB2\xB2\xB2\xB2\xB2 Day : ");
+                scanf("%s" ,&exp.day );
+                if (check_digit(exp.day) == 0)
+                    printf("                                                                  \xB2\xB2\xB2\xB2\xB2 Just digit allowed \n");
+            } while(check_digit(exp.day) == 0 ) ;
+
+            do
+            {
+                printf("                                                                  \xB2\xB2\xB2\xB2\xB2 Month : ");
+                scanf("%s", &exp.month );
+                if (check_digit(exp.month) == 0)
+                printf("                                                                  \xB2\xB2\xB2\xB2\xB2 Just digit allowed \n");
+
+            } while(check_digit(exp.month) == 0 ) ;
+
+            do
+            {
+            printf("                                                                  \xB2\xB2\xB2\xB2\xB2 Year : ");
             scanf("%s", &exp.year );
+            if (check_digit(exp.year) == 0)
+            printf("                                                                  \xB2\xB2\xB2\xB2\xB2 Just digit allowed \n");
+            } while(check_digit(exp.year) == 0 ) ;
+
             fflush(stdin);
-            printf("Please enter description : ");
-            gets(exp.description) ;
-            printf("\n Done!");
+            printf("\n                     \xDB\xDB\xDB\xDB\xB2 Please enter description : ");
+            gets(exp.description);
+            printf("\n\n                        \xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2 All Done ! \xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
             strcpy(exp.user_login , user_given) ;
 
             fwrite(&exp , sizeof(struct add_expenses) ,1 ,fp) ;
             fclose(fp);
         }
-    printf("\nDo you want to enter another Record ? y / n ") ;
-	choice = getch();
+    printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 Do you want to enter another Record ? [y/n] ") ;
+	choice = getche();
 	choice=toupper(choice);
-    if ( choice == 'Y')
+    switch (choice)
     {
-        system("cls");
-        expenses();
-    }
-        else
-        {
+        case 'Y' :
+            system("cls");
+            expenses();
+            break ;
+        case 'N' :
             system("cls");
             main_menu();
+            break;
+        default :
+            system("cls");
+            main_menu();
+            break ;
         }
+
 
 }
 
