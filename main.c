@@ -1846,11 +1846,6 @@ void incomeReports()
             tempInc = tempInc->link ;
             }
 
-        if (result == 0 )
-            {
-                printf("\n                     \xDB\xDB\xDB\xDB\xB2 Word not found in description");
-
-            }
         printf("\n                     \xDB\xDB\xDB\xDB\xB2               ") ;
         printf("                                               \xDB\xDB\xDB\xB2\xB2\n");
         printf("                     \xDB\xDB\xDB\xDB\xB2");
@@ -2608,11 +2603,6 @@ void expensesReports ()
             tempExp = tempExp->link ;
             }
 
-       /* if (result == 0 )
-            {
-                printf("\n                     \xDB\xDB\xDB\xDB\xB2 Word not found in description");
-
-            } */
         printf("\n                     \xDB\xDB\xDB\xDB\xB2               ") ;
         printf("                                               \xDB\xDB\xDB\xB2\xB2\n");
         printf("                     \xDB\xDB\xDB\xDB\xB2");
@@ -2766,19 +2756,22 @@ void balanceReports ()
     incomeLinkedList();
     expensesLinkedList();
     int choice ;
-    system("COLOR c");
-    printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 1. Current account balance   ");
-	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 2. Specified year account balance  ");
-	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 3. Account balance for a period of time  ");
-	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 4. Micro-balance of a period of time   ");
-	printf("\n\n");
-    printf("                           \xDB\xDB\xDB\xDB\xB2 5. Main Menu    ");
-	printf("\n\n");
-	printf("Please enter your choice : ");
+    system("COLOR d");
+    printf("\n");
+    printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+    printf("\n                          *                                                                 *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 1. Current account balance                               *     ");
+    printf("\n                          *                                                                 *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 2. Specified year account balance                        *     ");
+    printf("\n                          *                                                                 *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 3. Account balance for a period of time                  *     ");
+    printf("\n                          *                                                                 *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 4. Micro-balance of a period of time                     *     ");
+    printf("\n                          *                                                                 *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 5. Main Menu                                             *     ");
+    printf("\n                          *                                                                 *     ");
+    printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+    printf("\n\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
 	choice = getche();
 	printf("\n");
 
@@ -2787,82 +2780,183 @@ void balanceReports ()
         int incomeAmount , incomeSum = 0 , expensAmount , expensSum = 0 ;
         int net ;
         // sum income
-        printf("incomes : \n");
+        system("cls");
+        printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *              Current account balance            *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2 Incomes :  ") ;
+        printf("                                                  \xB2\xB2\xB2\xB2\xB2");
         tempInc = startInc ;
         while ( tempInc != NULL )
         {
             if( strcmp(tempInc->user_login , user_given )== 0  )
             {
-                printf("%s+" , tempInc->amount);
+                printf("\n                     \xB2\xB2\xB2\xB2\xB2                      %15s\t Rials" , tempInc->amount);
+                printf("               \t\xB2\xB2\xB2\xB2\xB2");
                 incomeAmount = atoi(tempInc->amount) ;
                 incomeSum = incomeAmount + incomeSum ;
             }
             tempInc = tempInc->link ;
+
         }
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
         // sum expens
-        printf("\n=============\n");
-        printf("expenses : \n");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2 Expenses : ") ;
+        printf("                                                  \xB2\xB2\xB2\xB2\xB2");
         tempExp = startExp ;
         while ( tempExp != NULL )
         {
             if( strcmp(tempExp->user_login , user_given )== 0  )
             {
-                printf("%s+" , tempExp->amount);
+                printf("\n                     \xB2\xB2\xB2\xB2\xB2                      %15s\t Rials" , tempExp->amount);
+                printf("               \t\xB2\xB2\xB2\xB2\xB2");
                 expensAmount = atoi(tempExp->amount) ;
                 expensSum = expensAmount + expensSum ;
             }
             tempExp = tempExp->link ;
         }
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
         net = incomeSum - expensSum ;
-        printf("\nThe Current account balance is %d " , net  ) ;
-        balanceReports();
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 The Current account balance is %d " , net  ) ;
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ") ;
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2  1. Balance Reports Menu");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2  2. Main Menu ");
+        int select ;
+        select = getch();
+        switch(select)
+            {
+                case '1':
+                    system("cls");
+                    balanceReports();
+                case '2':
+                    system("cls");
+                    main_menu();
+                default :
+                    system("cls");
+                    balanceReports();
+                    break;
 
-
-
+            }
 
     }
-
-
-
 
     if ( choice == '2')
     {
         int incomeAmount , incomeSum = 0 , expensAmount , expensSum = 0 ;
         int net  , year , search ;
-        printf("Please enter the desired year : ") ;
+        system("cls");
+        printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *          Specified year account balance         *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter the desired year : ") ;
         scanf("%d" , &year );
         // sum income
-        printf("incomes for %d : \n", year);
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2 Incomes :  ") ;
+        printf("                                                  \xB2\xB2\xB2\xB2\xB2");
         tempInc = startInc ;
         while ( tempInc != NULL )
         {
             search = atoi(tempInc-> year) ;
             if( search == year && strcmp(tempInc->user_login , user_given )== 0  )
             {
-                printf("%s+" , tempInc->amount);
+                printf("\n                     \xB2\xB2\xB2\xB2\xB2                      %15s\t Rials" , tempInc->amount);
+                printf("               \t\xB2\xB2\xB2\xB2\xB2");
                 incomeAmount = atoi(tempInc->amount) ;
                 incomeSum = incomeAmount + incomeSum ;
             }
             tempInc = tempInc->link ;
         }
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
         // sum expens
-        printf("\n=============\n");
-        printf("expenses for %d : \n" , year );
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2 Expenses : ") ;
+        printf("                                                  \xB2\xB2\xB2\xB2\xB2");
         tempExp = startExp ;
         while ( tempExp != NULL )
         {
             search = atoi(tempExp-> year) ;
             if( search == year && strcmp(tempExp->user_login , user_given )== 0  )
             {
-                printf("%s+" , tempExp->amount);
+                printf("\n                     \xB2\xB2\xB2\xB2\xB2                      %15s\t Rials" , tempExp->amount);
+                printf("               \t\xB2\xB2\xB2\xB2\xB2");
                 expensAmount = atoi(tempExp->amount) ;
                 expensSum = expensAmount + expensSum ;
             }
             tempExp = tempExp->link ;
         }
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
         net = incomeSum - expensSum ;
-        printf("\nThe Current account balance for %d is %d " , year, net ) ;
-        balanceReports();
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 The Current account balance for %d is %d " , year, net ) ;
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ") ;
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2  1. Balance Reports Menu");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2  2. Main Menu ");
+        int select ;
+        select = getch();
+        switch(select)
+            {
+                case '1':
+                    system("cls");
+                    balanceReports();
+                case '2':
+                    system("cls");
+                    main_menu();
+                default :
+                    system("cls");
+                    balanceReports();
+                    break;
+
+            }
 
 
     }
@@ -2877,12 +2971,27 @@ void balanceReports ()
         int searchYear , searchDay , searchMonth ;
         int incomeAmount , incomeSum = 0 , expensAmount , expensSum = 0 ;
         int net ;
-        printf("Please enter the start date(yyyy/mm/dd) : ") ;
+        printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *       Account balance for a period of time      *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+        printf("\n\n");
+        printf("                         \xDB\xDB\xDB\xDB\xB2 Please enter start Date  (yyyy/m/d) : ") ;
         scanf("%d/%d/%d" , &startYear , &startDay , &startMonth) ;
-        printf("\nPlease enter the end date(yyyy/mm/dd) : ");
+        printf("                         \xDB\xDB\xDB\xDB\xB2 Please enter end Date  (yyyy/m/d) : ");
         scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
         // sum income
-        printf("incomes : \n");
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2 Incomes :  ") ;
+        printf("                                                  \xB2\xB2\xB2\xB2\xB2");
         tempInc = startInc ;
         while ( tempInc != NULL )
         {
@@ -2893,16 +3002,29 @@ void balanceReports ()
             validDate = checkDate (startYear ,startDay ,startMonth ,endYear ,endDay ,endMonth ,searchYear ,searchDay ,searchMonth );
             if( validDate == 1 && strcmp(tempInc->user_login , user_given )== 0  )
             {
-                printf("%s+" , tempInc->amount);
+                printf("\n                     \xB2\xB2\xB2\xB2\xB2                      %15s\t Rials" , tempInc->amount);
+                printf("               \t\xB2\xB2\xB2\xB2\xB2");
                 incomeAmount = atoi(tempInc->amount) ;
                 incomeSum = incomeAmount + incomeSum ;
             }
             tempInc = tempInc->link ;
         }
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
 
         // sum expens
-        printf("\n=============\n");
-        printf("expenses : \n" );
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2 Expenses : ") ;
+        printf("                                                  \xB2\xB2\xB2\xB2\xB2");
         tempExp = startExp ;
         while ( tempExp != NULL )
         {
@@ -2913,15 +3035,40 @@ void balanceReports ()
             validDate = checkDate (startYear ,startDay ,startMonth ,endYear ,endDay ,endMonth ,searchYear ,searchDay ,searchMonth );
             if( validDate == 1 && strcmp(tempExp->user_login , user_given )== 0  )
             {
-                printf("%s+" , tempExp->amount);
+                printf("\n                     \xB2\xB2\xB2\xB2\xB2                      %15s\t Rials" , tempExp->amount);
+                printf("               \t\xB2\xB2\xB2\xB2\xB2");
                 expensAmount = atoi(tempExp->amount) ;
                 expensSum = expensAmount + expensSum ;
             }
             tempExp = tempExp->link ;
         }
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
         net = incomeSum - expensSum ;
-        printf("\nThe account balance is : %d " , net ) ;
-        balanceReports();
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 The account balance is : %d " , net ) ;
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ") ;
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2  1. Balance Reports Menu");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2  2. Main Menu ");
+        int select ;
+        select = getch();
+        switch(select)
+            {
+                case '1':
+                    system("cls");
+                    balanceReports();
+                case '2':
+                    system("cls");
+                    main_menu();
+                default :
+                    system("cls");
+                    balanceReports();
+                    break;
+
+            }
 
 
 
@@ -2934,32 +3081,44 @@ void balanceReports ()
         int searchYear , searchDay , searchMonth ;
         int incomeAmount , incomeSum = 0 , expensAmount , expensSum = 0 ;
         int net ;
-        printf("Please specify your expens type  for search: ");
-        int select ;
+        printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *                 Micro-Balance                   *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+        int choose ;
         printf("\n\n");
-        printf("                           \xDB\xDB\xDB\xDB\xB2 1. All Time   ");
+        printf("                         \xDB\xDB\xDB\xDB\xB2  1. All Time   ");
         printf("\n\n");
-        printf("                           \xDB\xDB\xDB\xDB\xB2 2. between two Dates   ");
-        printf("\n\n");
-        printf("Please enter your choice : ");
-        select = getche();
+        printf("                         \xDB\xDB\xDB\xDB\xB2  2. between two Dates   ");
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
+        choose = getche();
         printf("\n");
-        switch(select)
+        switch(choose)
         {
             case '1':
                 startYear = 0 , startMonth = 0 , startDay = 0 ;
                 endYear = 9999999 , endMonth = 9999999 , endDay = 9999999 ;
                 break;
             case '2':
-                printf("Tarikh aval ra vared konid (yyyy/mm/dd) : ") ;
+                printf("\n                         \xDB\xDB\xDB\xDB\xB2 Please enter start Date  (yyyy/m/d) : ") ;
                 scanf("%d/%d/%d" , &startYear , &startDay , &startMonth) ;
-                printf("\nTarikh dovom ra vared konid (yyyy/mm/dd) : ");
+                printf("                         \xDB\xDB\xDB\xDB\xB2 Please enter end Date  (yyyy/m/d) : ");
                 scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
                 break;
 
         }
         // sum income
-        printf("incomes : \n");
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2 Incomes :  ") ;
+        printf("                                                  \xB2\xB2\xB2\xB2\xB2");
         tempInc = startInc ;
         while ( tempInc != NULL )
         {
@@ -2970,20 +3129,33 @@ void balanceReports ()
             validDate = checkDate (startYear ,startDay ,startMonth ,endYear ,endDay ,endMonth ,searchYear ,searchDay ,searchMonth );
             if( validDate == 1 && strcmp(tempInc->user_login , user_given )== 0  )
             {
-                printf("Amount : %s\n" , tempInc->amount);
-                printf("source : %s\n" , tempInc->source);
-                printf("Date : %s/%s/%s\n" , tempInc->year , tempInc->month , tempInc->day);
-                printf("description : %s\n" , tempInc->description);
-                printf("==========================\n");
+                printf("\n                                                    Amount : %s Rial \n" , tempInc->amount);
+                printf("                                                    Source : %s\n" , tempInc->source);
+                printf("                                                    Date : %s/%s/%s\n" , tempInc->year , tempInc->month , tempInc->day);
+                printf("                                                   Description : %s\n" , tempInc->description);
+                printf("                                      \xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2");
+                printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\n");
                 incomeAmount = atoi(tempInc->amount) ;
                 incomeSum = incomeAmount + incomeSum ;
             }
             tempInc = tempInc->link ;
         }
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
 
         // sum expens
-        printf("\n=============\n");
-        printf("expenses : \n" );
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2 Expenses : ") ;
+        printf("                                                  \xB2\xB2\xB2\xB2\xB2");
         tempExp = startExp ;
         while ( tempExp != NULL )
         {
@@ -2994,19 +3166,46 @@ void balanceReports ()
             validDate = checkDate (startYear ,startDay ,startMonth ,endYear ,endDay ,endMonth ,searchYear ,searchDay ,searchMonth );
             if( validDate == 1 && strcmp(tempExp->user_login , user_given )== 0  )
             {
-                printf("Amount : %s\n" , tempExp->amount);
-                printf("source : %s\n" , tempExp->source);
-                printf("Date : %s/%s/%s\n" , tempExp->year , tempExp->month , tempExp->day);
-                printf("description : %s\n" , tempExp->description);
-                printf("==========================\n");
+                printf("\n                                                    Amount : %s Rial \n" , tempExp->amount);
+                printf("                                                    Source : %s\n" , tempExp->source);
+                printf("                                                    Date : %s/%s/%s\n" , tempExp->year , tempExp->month , tempExp->day);
+                printf("                                                   Description : %s\n" , tempExp->description);
+                printf("                                      \xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2");
+                printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\n");
                 expensAmount = atoi(tempExp->amount) ;
                 expensSum = expensAmount + expensSum ;
             }
             tempExp = tempExp->link ;
         }
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2               ") ;
+        printf("                                               \xDB\xDB\xDB\xB2\xB2\n");
+        printf("                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
         net = incomeSum - expensSum ;
-        printf("\nThe account balance is : %d " , net ) ;
-        balanceReports();
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 The account balance is : %d " , net ) ;
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ") ;
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2  1. Balance Reports Menu");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2  2. Main Menu ");
+        int select ;
+        select = getch();
+        switch(select)
+            {
+                case '1':
+                    system("cls");
+                    balanceReports();
+                case '2':
+                    system("cls");
+                    main_menu();
+                default :
+                    system("cls");
+                    balanceReports();
+                    break;
+
+            }
 
 
     }
