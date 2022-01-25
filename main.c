@@ -1119,23 +1119,6 @@ void incomeLinkedList ()
         endInc = tempInc ;
     }
     fclose(fp);
-    /*tempInc = startInc ;
-
-    while ( tempInc != NULL )
-    {
-        if(strcmp( tempInc->user_login , "sina") == 0 )
-        {
-        printf("user : %s\n" , tempInc-> user_login ) ;
-        printf("source : %s\n" , tempInc-> source ) ;
-        printf("amount : %s\n" , tempInc-> amount ) ;
-        printf("des : %s\n" , tempInc-> description ) ;
-        printf("day : %s\n" , tempInc-> day ) ;
-        printf("month : %s\n" , tempInc-> month ) ;
-        printf("year : %s\n" , tempInc-> year ) ;
-        printf("\n----------------------------\n");
-        }
-        tempInc = tempInc->link ;
-    } */
 
 
 }
@@ -1177,26 +1160,6 @@ void expensesLinkedList ()
         endExp = tempExp ;
     }
     fclose(fp);
-    /*
-    tempExp = startExp ;
-
-    while ( tempExp != NULL )
-    {
-        if(strcmp( tempExp->user_login , "sina") == 0 )
-        {
-        printf("user : %s\n" , tempExp-> user_login ) ;
-        printf("source : %s\n" , tempExp-> source ) ;
-        printf("amount : %s\n" , tempExp-> amount ) ;
-        printf("des : %s\n" , tempExp-> description ) ;
-        printf("day : %s\n" , tempExp-> day ) ;
-        printf("month : %s\n" , tempExp-> month ) ;
-        printf("year : %s\n" , tempExp-> year ) ;
-        printf("\n----------------------------\n");
-        }
-        tempExp = tempExp->link ;
-    }
-    */
-
 
 }
 
@@ -1204,56 +1167,93 @@ void incomeReports()
 {
     incomeLinkedList();
     int choice ;
-    system("COLOR c");
-    printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 1. Total income for a specified year   ");
-	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 2. Total income for a period of time  ");
-	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 3. The amount of a certain type of income in a period of time  ");
-	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 4. The ratio of different incomes to each other  ");
-	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 5. Micro-revenues of a period of time   ");
-	printf("\n\n");
-    printf("                           \xDB\xDB\xDB\xDB\xB2 6. The largest income figure in a period of time  ");
-	printf("\n\n");
-    printf("                           \xDB\xDB\xDB\xDB\xB2 7. specific word search in the income Description field   ");
-	printf("\n\n");
-    printf("                           \xDB\xDB\xDB\xDB\xB2 8. Main Menu    ");
-	printf("\n\n");
-	printf("Please enter your choice : ");
+    system("COLOR d");
+    printf("\n");
+    printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 1. Total incomes for a specified year                                *     ");
+    printf("\n                          *                                                                             *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 2. Total incomes for a period of time                                *     ");
+    printf("\n                          *                                                                             *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 3. The amount of a certain type of incomes in a period of time       *     ");
+    printf("\n                          *                                                                             *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 4. The ratio of different incomes to each other                      *     ");
+    printf("\n                          *                                                                             *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 5. Micro-revenues of a period of time                                *     ");
+    printf("\n                          *                                                                             *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 6. The largest income figure in a period of time                     *     ");
+    printf("\n                          *                                                                             *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 7. specific word search in the incomes Description field             *     ");
+    printf("\n                          *                                                                             *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 8. Main Menu                                                         *     ");
+    printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+    printf("\n\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
 	choice = getche();
 	printf("\n");
-
     if ( choice == '1' )
     {
         system("cls");
         int year ;
         int amount , sum = 0 ;
-        int search ;
-        printf("Please enter the desired year : ") ;
+        int search , select ;
+        char checkYear [50];
+        printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *       Total incomes for a specified year        *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter the desired year : ") ;
         scanf("%d" , &year ) ;
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2 Incomes :  ") ;
+        printf("                                                  \xB2\xB2\xB2\xB2\xB2");
         tempInc = startInc ;
         while ( tempInc != NULL )
         {
             search = atoi(tempInc-> year) ;
             if( search == year && strcmp(tempInc->user_login , user_given )== 0  )
             {
-                printf("%s+" , tempInc->amount);
+                printf("\n                     \xB2\xB2\xB2\xB2\xB2                      %15s\t Rial" , tempInc->amount);
+                printf("               \t\xB2\xB2\xB2\xB2\xB2");
                 amount = atoi(tempInc->amount) ;
                 sum = amount + sum ;
             }
             tempInc = tempInc->link ;
         }
-        printf("= ");
-        printf("\n\n\nkol daramad sal %d : %d" ,  year , sum ) ;
-        getchar();
-            incomeReports();
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 The Total Incomes for %d is :   %d Rial" ,  year , sum ) ;
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ") ;
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2  1. Income Reports Menu");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2  2. Main Menu");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ") ;
+        select = getche();
+        switch(select)
+            {
+                case '1':
+                    system("cls");
+                    incomeReports();
+                case '2':
+                    system("cls");
+                    main_menu();
+                default :
+                    system("cls");
+                    incomeReports();
+                    break;
+
+            }
 
     }
-
-
 
     if (choice == '2' )
     {
@@ -1504,7 +1504,7 @@ void incomeReports()
 
     }
 
-        if ( choice == '6' )
+    if ( choice == '6' )
     {
         system("cls");
         int startYear , startDay , startMonth ;
@@ -1557,7 +1557,6 @@ void incomeReports()
         incomeReports();
 
     }
-
 
     if (choice == '7')
     {
@@ -1627,16 +1626,11 @@ void incomeReports()
 
     }
 
-
-
     if (choice == '8')
     {
         system("cls") ;
         main_menu () ;
     }
-
-
-
 
 }
 
