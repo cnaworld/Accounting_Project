@@ -1480,30 +1480,43 @@ void incomeReports()
         int searchYear , searchDay , searchMonth ;
         float amount , sum = 0 , programming = 0 , yaraneh = 0 , pocketMoney = 0 , uniGrant = 0  ;
         float sumAmount =0 , sumProgramming = 0 , sumYaraneh = 0 , sumPocketMoney = 0 , sumUniGrant = 0  ;
-        printf("Please specify your income type  for search: ");
-        int select ;
+        printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *   The ratio of different incomes to each other  *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+        int choose ;
         printf("\n\n");
-        printf("                           \xDB\xDB\xDB\xDB\xB2 1. All Time   ");
+        printf("                         \xDB\xDB\xDB\xDB\xB2  1. All Time   ");
         printf("\n\n");
-        printf("                           \xDB\xDB\xDB\xDB\xB2 2. between two Dates   ");
-        printf("\n\n");
-        printf("Please enter your choice : ");
-        select = getche();
+        printf("                         \xDB\xDB\xDB\xDB\xB2  2. between two Dates   ");
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
+        choose = getche();
         printf("\n");
-        switch(select)
+        switch(choose)
         {
             case '1':
                 startYear = 0 , startMonth = 0 , startDay = 0 ;
                 endYear = 9999999 , endMonth = 9999999 , endDay = 9999999 ;
                 break;
             case '2':
-                printf("Tarikh aval ra vared konid (yyyy/mm/dd) : ") ;
+                printf("\n                         \xDB\xDB\xDB\xDB\xB2 Please enter start Date  (yyyy/m/d) : ") ;
                 scanf("%d/%d/%d" , &startYear , &startDay , &startMonth) ;
-                printf("\nTarikh dovom ra vared konid (yyyy/mm/dd) : ");
+                printf("                         \xDB\xDB\xDB\xDB\xB2 Please enter end Date  (yyyy/m/d) : ");
                 scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
                 break;
 
         }
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2 The Ratio :  ") ;
+        printf("                                                \xDB\xDB\xDB\xB2\xB2");
         tempInc = startInc ;
         while ( tempInc != NULL )
         {
@@ -1514,31 +1527,26 @@ void incomeReports()
             validDate = checkDate (startYear ,startDay ,startMonth ,endYear ,endDay ,endMonth ,searchYear ,searchDay ,searchMonth );
             if (validDate == 1 && strcmp(tempInc->user_login , user_given )== 0 )
             {
-               // printf("%s+" , tempInc->amount);
                 amount = atof(tempInc->amount) ;
                 sum = amount + sum ;
             }
             if (validDate == 1 && strcmp(tempInc->user_login , user_given )== 0 && strcmp(tempInc->source , "Programming Salary") == 0  )
             {
-              //  printf("%s+" , tempInc->amount);
                 programming = atof(tempInc->amount) ;
                 sumProgramming = programming + sumProgramming ;
             }
             if (validDate == 1 && strcmp(tempInc->user_login , user_given )== 0 && strcmp(tempInc->source , "YARANEH") == 0  )
             {
-               // printf("%s+" , tempInc->amount);
                 yaraneh = atof(tempInc->amount) ;
                 sumYaraneh = yaraneh + sumYaraneh ;
             }
             if (validDate == 1 && strcmp(tempInc->user_login , user_given )== 0 && strcmp(tempInc->source , "Pocket money") == 0  )
             {
-               // printf("%s+" , tempInc->amount);
                 pocketMoney = atof(tempInc->amount) ;
                 sumPocketMoney = pocketMoney + sumPocketMoney ;
             }
             if (validDate == 1 && strcmp(tempInc->user_login , user_given )== 0 && strcmp(tempInc->source , "University grant") == 0  )
             {
-                //printf("%s+" , tempInc->amount);
                 uniGrant = atof(tempInc->amount) ;
                 sumUniGrant = uniGrant + sumUniGrant ;
             }
@@ -1549,17 +1557,35 @@ void incomeReports()
         yaraneh = ( sumYaraneh * 100 ) / sum ;
         pocketMoney = ( sumPocketMoney * 100 ) / sum ;
         uniGrant = ( sumUniGrant * 100 ) / sum ;
-        printf("programming : %0.2f\t% " , programming) ;
-        printf("\n");
-        printf("yaraneh : %0.2f\t% " , yaraneh) ;
-        printf("\n");
-        printf("pocketMoney : %0.2f\t% " , pocketMoney) ;
-        printf("\n");
-        printf("uniGrant : %0.2f\t% " , uniGrant) ;
-        printf("\n");
-        getchar();
-        incomeReports();
+        printf("\n                           \xDB\xDB\xDB\xDB\xB2 Programming Salary : %0.2f%% " , programming) ;
+        printf("\n                                    \xDB\xDB\xDB\xDB\xB2 YARANEH :        %0.2f%% " , yaraneh) ;
+        printf("\n                                             \xDB\xDB\xDB\xDB\xB2 Pocket money : %0.2f%% " , pocketMoney) ;
+        printf("\n                                                      \xDB\xDB\xDB\xDB\xB2 University grant : %0.2f%% " , uniGrant) ;
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ") ;
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2  1. Income Reports Menu");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2  2. Main Menu ");
+        int pick ;
+        pick = getch();
+        switch(pick)
+            {
+                case '1':
+                    system("cls");
+                    incomeReports();
+                case '2':
+                    system("cls");
+                    main_menu();
+                default :
+                    system("cls");
+                    incomeReports();
+                    break;
 
+            }
 
     }
 
@@ -1569,32 +1595,45 @@ void incomeReports()
         int startYear , startDay , startMonth ;
         int endYear , endDay , endMonth ;
         int searchYear , searchDay , searchMonth ;
-        printf("Please specify your income type  for search: ");
-        int select ;
+        printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *                 Micro-revenues                  *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+        int choose ;
         printf("\n\n");
-        printf("                           \xDB\xDB\xDB\xDB\xB2 1. All Time   ");
+        printf("                         \xDB\xDB\xDB\xDB\xB2  1. All Time   ");
         printf("\n\n");
-        printf("                           \xDB\xDB\xDB\xDB\xB2 2. between two Dates   ");
-        printf("\n\n");
-        printf("Please enter your choice : ");
-        select = getche();
+        printf("                         \xDB\xDB\xDB\xDB\xB2  2. between two Dates   ");
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
+        choose = getche();
         printf("\n");
-        switch(select)
+        switch(choose)
         {
             case '1':
                 startYear = 0 , startMonth = 0 , startDay = 0 ;
                 endYear = 9999999 , endMonth = 9999999 , endDay = 9999999 ;
                 break;
             case '2':
-                printf("Tarikh aval ra vared konid (yyyy/mm/dd) : ") ;
+                printf("\n                         \xDB\xDB\xDB\xDB\xB2 Please enter start Date  (yyyy/m/d) : ") ;
                 scanf("%d/%d/%d" , &startYear , &startDay , &startMonth) ;
-                printf("\nTarikh dovom ra vared konid (yyyy/mm/dd) : ");
+                printf("                         \xDB\xDB\xDB\xDB\xB2 Please enter end Date  (yyyy/m/d) : ");
                 scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
                 break;
 
         }
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2               ") ;
+        printf("                                               \xDB\xDB\xDB\xB2\xB2\n");
         tempInc = startInc ;
-        printf("==========================\n");
+        //printf("==========================\n");
         while ( tempInc != NULL )
         {
             int validDate = 0 ;
@@ -1604,18 +1643,44 @@ void incomeReports()
             validDate = checkDate (startYear ,startDay ,startMonth ,endYear ,endDay ,endMonth ,searchYear ,searchDay ,searchMonth );
             if (validDate == 1 && strcmp(tempInc->user_login , user_given )== 0 )
             {
-                printf("Amount : %s\n" , tempInc->amount);
-                printf("source : %s\n" , tempInc->source);
-                printf("Date : %s/%s/%s\n" , tempInc->year , tempInc->month , tempInc->day);
-                printf("description : %s\n" , tempInc->description);
-                printf("==========================\n");
+                printf("                                                    Amount : %s Rial \n" , tempInc->amount);
+                printf("                                                    Source : %s\n" , tempInc->source);
+                printf("                                                    Date : %s/%s/%s\n" , tempInc->year , tempInc->month , tempInc->day);
+                printf("                                                   Description : %s\n" , tempInc->description);
+                printf("                                      \xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2");
+                printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\n");
+
             }
 
             tempInc = tempInc->link ;
         }
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2               ") ;
+        printf("                                               \xDB\xDB\xDB\xB2\xB2\n");
+        printf("                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ") ;
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2  1. Income Reports Menu");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2  2. Main Menu ");
+        int pick ;
+        pick = getch();
+        switch(pick)
+            {
+                case '1':
+                    system("cls");
+                    incomeReports();
+                case '2':
+                    system("cls");
+                    main_menu();
+                default :
+                    system("cls");
+                    incomeReports();
+                    break;
 
-            getchar();
-            incomeReports();
+            }
 
     }
 
