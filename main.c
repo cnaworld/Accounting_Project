@@ -669,7 +669,7 @@ void income()
             printf("\n");
             do
             {
-                printf("\n                     \xDB\xDB\xDB\xDB\xB2 Please specify the amount of income : ");
+                printf("\n                     \xDB\xDB\xDB\xDB\xB2 Please specify the amount of income (Rial): ");
                 scanf("%s",&inc.amount);
                 if (strlen(inc.amount) <= 2)
                     printf("                     \xDB\xDB\xDB\xDB\xB2 amount must be more than 2 digit\n");
@@ -805,7 +805,7 @@ void expenses ()
             printf("\n");
             do
             {
-                printf("\n                     \xDB\xDB\xDB\xDB\xB2 Please specify the amount of expens : ");
+                printf("\n                     \xDB\xDB\xDB\xDB\xB2 Please specify the amount of expens (Rial): ");
                 scanf("%s",&exp.amount);
                 if (strlen(exp.amount) <= 2)
                     printf("                     \xDB\xDB\xDB\xDB\xB2 amount must be more than 2 digit\n");
@@ -876,20 +876,23 @@ void statistics ()
 
 
     int choice ;
-    system("COLOR c");
-    printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 1. Income Reports   ");
-	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 2. Expenses Reports  ");
-	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 3. Account balances reports  ");
-	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 4. Main Menu  ");
-	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 5. Exit   ");
-	printf("\n\n");
-	printf("Please enter your choice : ");
-	choice = getch();
+    system("COLOR d");
+    printf("\n");
+    printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+    printf("\n                          *                                                 *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 1. Incomes Reports                       *     ");
+    printf("\n                          *                                                 *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 2. Expenses Reports                      *     ");
+    printf("\n                          *                                                 *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 3. Account balance Reports               *     ");
+    printf("\n                          *                                                 *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 4. Main Menu                             *     ");
+    printf("\n                          *                                                 *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 5. Exit                                  *     ");
+    printf("\n                          *                                                 *     ");
+    printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+    printf("\n\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
+	choice = getche();
 	choice=toupper(choice);
 	switch(choice)
 	{
@@ -933,49 +936,12 @@ void statistics ()
             Sleep(3000);
             exit(0);
             break;
+        default :
+            MessageBox(0,"Enter Valid Number!\nPlease Try again!","Error!!",0);
+            system("cls");
+            statistics();
+            break ;
 	}
-
-
-
-
-
-    /* incomeLinkedList ();
-    tempInc = startInc ;
-    while ( tempInc != NULL )
-    {
-        if(strcmp( tempInc->user_login , "hossein") == 0 )
-        {
-        printf("user : %s\n" , tempInc-> user_login ) ;
-        printf("source : %s\n" , tempInc-> source ) ;
-        printf("amount : %s\n" , tempInc-> amount ) ;
-        printf("des : %s\n" , tempInc-> description ) ;
-        printf("day : %s\n" , tempInc-> day ) ;
-        printf("month : %s\n" , tempInc-> month ) ;
-        printf("year : %s\n" , tempInc-> year ) ;
-        printf("\n----------------------------\n");
-        }
-        tempInc = tempInc->link ;
-    }
-    printf("\n*********************\n") ; */
-
-   /* expensesLinkedList ();
-    tempExp = startExp ;
-        while ( tempExp != NULL )
-    {
-        if(strcmp( tempExp->user_login , "hossein") == 0 )
-        {
-        printf("user : %s\n" , tempExp-> user_login ) ;
-        printf("source : %s\n" , tempExp-> source ) ;
-        printf("amount : %s\n" , tempExp-> amount ) ;
-        printf("des : %s\n" , tempExp-> description ) ;
-        printf("day : %s\n" , tempExp-> day ) ;
-        printf("month : %s\n" , tempExp-> month ) ;
-        printf("year : %s\n" , tempExp-> year ) ;
-        printf("\n----------------------------\n");
-        }
-        tempExp = tempExp->link ;
-    }
-    */
 
 
 }
