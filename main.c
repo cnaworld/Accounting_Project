@@ -1892,25 +1892,25 @@ void expensesReports ()
 {
     expensesLinkedList();
     int choice ;
-    system("COLOR c");
-    printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 1. Total expenses for a specified year   ");
-	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 2. Total expenses for a period of time  ");
-	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 3. The amount of a certain type of expenses in a period of time  ");
-	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 4. The ratio of different expenses to each other  ");
-	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 5. Micro-expenses of a period of time   ");
-	printf("\n\n");
-    printf("                           \xDB\xDB\xDB\xDB\xB2 6. The largest expenses figure in a period of time  ");
-	printf("\n\n");
-    printf("                           \xDB\xDB\xDB\xDB\xB2 7. specific word search in the expenses Description field   ");
-	printf("\n\n");
-    printf("                           \xDB\xDB\xDB\xDB\xB2 8. Main Menu    ");
-	printf("\n\n");
-	printf("Please enter your choice : ");
+    printf("\n");
+    printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 1. Total Expenses for a specified year                               *     ");
+    printf("\n                          *                                                                             *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 2. Total Expenses for a period of time                               *     ");
+    printf("\n                          *                                                                             *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 3. The amount of a certain type of Expenses in a period of time      *     ");
+    printf("\n                          *                                                                             *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 4. The ratio of different Expenses to each other                     *     ");
+    printf("\n                          *                                                                             *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 5. Micro-Expenses of a period of time                                *     ");
+    printf("\n                          *                                                                             *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 6. The largest Expens figure in a period of time                     *     ");
+    printf("\n                          *                                                                             *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 7. specific word search in the Expenses Description field            *     ");
+    printf("\n                          *                                                                             *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 8. Main Menu                                                         *     ");
+    printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+    printf("\n\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
 	choice = getche();
 	printf("\n");
 
@@ -1919,26 +1919,63 @@ void expensesReports ()
         system("cls");
         int year ;
         int amount , sum = 0 ;
-        int search ;
-        printf("Please enter the desired year : ") ;
+        int search , select ;
+        printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *       Total Expenses for a specified year       *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter the desired year : ") ;
         scanf("%d" , &year ) ;
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2 Incomes :  ") ;
+        printf("                                                  \xB2\xB2\xB2\xB2\xB2");
         tempExp = startExp ;
         while ( tempExp != NULL )
         {
             search = atoi(tempExp-> year) ;
             if( search == year && strcmp(tempExp->user_login , user_given )== 0  )
             {
-                printf("%s+" , tempExp->amount);
+                printf("\n                     \xB2\xB2\xB2\xB2\xB2                      %15s\t Rials" , tempExp->amount);
+                printf("               \t\xB2\xB2\xB2\xB2\xB2");
                 amount = atoi(tempExp->amount) ;
                 sum = amount + sum ;
             }
             tempExp = tempExp->link ;
         }
-        printf("= ");
-        printf("\n\n\nkol Makharej sal %d : %d" ,  year , sum ) ;
-        getchar();
-            expensesReports();
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 The Total Expenses for %d is :   %d Rials" ,  year , sum ) ;
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ") ;
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2  1. Expens Reports Menu");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2  2. Main Menu ");
 
+        select = getch();
+        switch(select)
+            {
+                case '1':
+                    system("cls");
+                    expensesReports();
+                case '2':
+                    system("cls");
+                    main_menu();
+                default :
+                    system("cls");
+                    expensesReports();
+                    break;
+
+            }
     }
 
     if (choice == '2' )
@@ -1948,10 +1985,43 @@ void expensesReports ()
         int endYear , endDay , endMonth ;
         int searchYear , searchDay , searchMonth ;
         int amount , sum = 0 ;
-        printf("Please enter the start date(yyyy/mm/dd) : ") ;
-        scanf("%d/%d/%d" , &startYear , &startDay , &startMonth) ;
-        printf("\nPlease enter the end date(yyyy/mm/dd) : ");
-        scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
+        printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *       Total Expenses for a period of time       *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
+        int select ;
+        printf("\n\n");
+        printf("                         \xDB\xDB\xDB\xDB\xB2  1. All Time   ");
+        printf("\n\n");
+        printf("                         \xDB\xDB\xDB\xDB\xB2  2. between two Dates   ");
+        select = getch();
+        printf("\n");
+        switch(select)
+        {
+            case '1':
+                startYear = 0 , startMonth = 0 , startDay = 0 ;
+                endYear = 9999999 , endMonth = 9999999 , endDay = 9999999 ;
+                break;
+            case '2':
+                printf("                         \xDB\xDB\xDB\xDB\xB2 Please enter start Date  (yyyy/m/d) : ") ;
+                scanf("%d/%d/%d" , &startYear , &startDay , &startMonth) ;
+                printf("                         \xDB\xDB\xDB\xDB\xB2 Please enter end Date  (yyyy/m/d) : ");
+                scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
+                break;
+
+        }
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2 Incomes :  ") ;
+        printf("                                                  \xB2\xB2\xB2\xB2\xB2");
         tempExp = startExp ;
         while ( tempExp != NULL )
         {
@@ -1962,7 +2032,8 @@ void expensesReports ()
             validDate = checkDate (startYear ,startDay ,startMonth ,endYear ,endDay ,endMonth ,searchYear ,searchDay ,searchMonth );
             if (validDate == 1 && strcmp(tempExp->user_login , user_given )== 0 )
             {
-                printf("%s+" , tempExp->amount);
+                printf("\n                     \xB2\xB2\xB2\xB2\xB2                      %15s\t Rials" , tempExp->amount);
+                printf("               \t\xB2\xB2\xB2\xB2\xB2");
                 amount = atoi(tempExp->amount) ;
                 sum = amount + sum ;
 
@@ -1970,10 +2041,33 @@ void expensesReports ()
 
             tempExp = tempExp->link ;
         }
-            printf("= ");
-            printf("\n\n\nkol makharej  : %d" , sum ) ;
-            getchar();
-            expensesReports();
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xB2");
+        printf("\xDB\xDB\xDB\xDB\xB2\xDB\xDB\xDB\xDB\xDB\xDB\xB2");
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 The Total Incomes  is :   %d Rial" , sum ) ;
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ") ;
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2  1. Expens Reports Menu");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2  2. Main Menu ");
+
+        int choose ;
+        choose = getch();
+        switch(choose)
+            {
+                case '1':
+                    system("cls");
+                    expensesReports();
+                case '2':
+                    system("cls");
+                    main_menu();
+                default :
+                    system("cls");
+                    expensesReports();
+                    break;
+
+            }
 
     }
 
