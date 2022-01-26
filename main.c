@@ -123,12 +123,7 @@ void main ()
             break ;
 
 	}
-	/* if ( choice != 3 || choice != 2 || choice != 1  || choice != 0x0A )
-    {
-                    MessageBox(0,"Enter Valid Number!\nPlease Try again!","Error!!",0);
-                    system("cls");
-                    main();
-    } */
+
 }
 
 void signup ()
@@ -553,19 +548,19 @@ int check_pass (char pass [50])
         do
         {
             printf("\n\xDB\xDB\xDB\xDB\xB2 Confirm your Password : ");
-            char starRePass [50] , c = ' ';
-            int i = 0 ;
-            while (i<50) // print * instead paswword
+            char starRePass [50] , d = ' ';
+            int b = 0 ;
+            while (b<50) // print * instead paswword
             {
-                starRePass[i] = getch();
-                c = starRePass[i];
-                if (c==13)
+                starRePass[b] = getch();
+                d = starRePass[b];
+                if (d==13)
                     break ;
                 printf("*");
-                i++;
+                b++;
             }
-            starRePass[i] = '\0';
-            i = 0;
+            starRePass[b] = '\0';
+            b = 0;
             strcpy(re_password , starRePass );
             printf("\n");
             if(strcmp(re_password,pass)== 1 || strlen(pass) != strlen(re_password) )
