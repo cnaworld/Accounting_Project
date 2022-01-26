@@ -292,7 +292,7 @@ void login ()
     printf("\n                              *                                                 *     ");
     printf("\n                              *                                                 *     ");
     printf("\n                              *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
-
+    printf("\n\n                           \xDB\xDB\xDB\xDB\xB2 Be careful! only allowed 5 attempts. (%d/5) " , attempts+1 );
     char pass_given [50] , c = ' ';
     int i = 0  , j = 0 ;
     printf("\n\n\n                           \xDB\xDB\xDB\xDB\xB2 Please enter your username: ");
@@ -306,7 +306,7 @@ void login ()
     }
     else
     {
-        if( attempts >= 5  )
+        if( attempts > 5  )
         {
             printf("Sorry, only allowed 5 attempts.\n ");
             Sleep(3000);
@@ -317,7 +317,7 @@ void login ()
                 printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
                 printf("\n                          *                                                 *     ");
                 printf("\n                          *                                                 *     ");
-                printf("\n                          *                       %d Sec                    * ",j);
+                printf("\n                          *                       %d Sec                     * ",j);
                 printf("\n                          *                                                 *     ");
                 printf("\n                          *                                                 *     ");
                 printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
@@ -1309,6 +1309,10 @@ void incomeReports()
                 printf("                         \xDB\xDB\xDB\xDB\xB2 Please enter end Date  (yyyy/m/d) : ");
                 scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
                 break;
+            default :
+                system("cls");
+                incomeReports();
+                break;
 
         }
         printf("\n                     \xDB\xDB\xDB\xDB\xB2");
@@ -1434,6 +1438,10 @@ void incomeReports()
                 printf("                         \xDB\xDB\xDB\xDB\xB2 Please enter end Date  (yyyy/m/d) : ");
                 scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
                 break;
+            default :
+                system("cls");
+                incomeReports();
+                break;
 
         }
         printf("\n                     \xDB\xDB\xDB\xDB\xB2");
@@ -1526,6 +1534,10 @@ void incomeReports()
                 scanf("%d/%d/%d" , &startYear , &startDay , &startMonth) ;
                 printf("                         \xDB\xDB\xDB\xDB\xB2 Please enter end Date  (yyyy/m/d) : ");
                 scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
+                break;
+            default :
+                system("cls");
+                incomeReports();
                 break;
 
         }
@@ -1642,6 +1654,10 @@ void incomeReports()
                 printf("                         \xDB\xDB\xDB\xDB\xB2 Please enter end Date  (yyyy/m/d) : ");
                 scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
                 break;
+            default :
+                system("cls");
+                incomeReports();
+                break;
 
         }
         printf("\n                     \xDB\xDB\xDB\xDB\xB2");
@@ -1738,6 +1754,10 @@ void incomeReports()
                 printf("                         \xDB\xDB\xDB\xDB\xB2 Please enter end Date  (yyyy/m/d) : ");
                 scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
                 break;
+            default :
+                    system("cls");
+                    incomeReports();
+                    break;
 
         }
         tempInc = startInc ;
@@ -1829,6 +1849,10 @@ void incomeReports()
                 printf("                         \xDB\xDB\xDB\xDB\xB2 Please enter end Date  (yyyy/m/d) : ");
                 scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
                 break;
+            default :
+                    system("cls");
+                    incomeReports();
+                    break;
 
         }
         fflush(stdin);
@@ -2027,6 +2051,10 @@ void expensesReports ()
                 printf("                         \xDB\xDB\xDB\xDB\xB2 Please enter end Date  (yyyy/m/d) : ");
                 scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
                 break;
+            default :
+                system("cls");
+                expensesReports();
+                break;
 
         }
         printf("\n                     \xDB\xDB\xDB\xDB\xB2");
@@ -2166,6 +2194,10 @@ void expensesReports ()
                 printf("                         \xDB\xDB\xDB\xDB\xB2 Please enter end Date  (yyyy/m/d) : ");
                 scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
                 break;
+            default :
+                system("cls");
+                expensesReports();
+                break;
 
         }
         printf("\n                     \xDB\xDB\xDB\xDB\xB2");
@@ -2258,6 +2290,10 @@ void expensesReports ()
                 scanf("%d/%d/%d" , &startYear , &startDay , &startMonth) ;
                 printf("                         \xDB\xDB\xDB\xDB\xB2 Please enter end Date  (yyyy/m/d) : ");
                 scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
+                break;
+            default :
+                system("cls");
+                expensesReports();
                 break;
 
         }
@@ -2398,6 +2434,10 @@ void expensesReports ()
                 printf("                         \xDB\xDB\xDB\xDB\xB2 Please enter end Date  (yyyy/m/d) : ");
                 scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
                 break;
+            default :
+                system("cls");
+                expensesReports();
+                break;
 
         }
         printf("\n                     \xDB\xDB\xDB\xDB\xB2");
@@ -2490,6 +2530,10 @@ void expensesReports ()
                 scanf("%d/%d/%d" , &startYear , &startDay , &startMonth) ;
                 printf("                         \xDB\xDB\xDB\xDB\xB2 Please enter end Date  (yyyy/m/d) : ");
                 scanf("%d/%d/%d" , &endYear , &endDay , &endMonth) ;
+                break;
+            default :
+                system("cls");
+                expensesReports();
                 break;
 
         }
@@ -2584,7 +2628,7 @@ void expensesReports ()
                 break;
             default :
                 system("cls");
-                incomeReports();
+                expensesReports();
                 break;
 
         }
@@ -2663,7 +2707,7 @@ void expensesReports ()
 
 }
 
-
+// Check Date algorithm => image is here : https://postimg.cc/hQRr7msv
 
 int checkDate (int startYear , int startDay ,int startMonth ,int endYear ,int endDay ,int endMonth ,int searchYear ,int searchDay ,int searchMonth )
 {
