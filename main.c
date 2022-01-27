@@ -7,8 +7,21 @@
 #include<time.h>
 #include<ctype.h>
 #include<dos.h>
+
+// Check Format Function
+int check_chracter  ( char name[50] );
+int check_digit (char digit[] );
+int unique_username (char user [50]);
+int check_pass (char pass [50]);
+int check_email (char email [50]);
+int checkDate (int startYear , int startDay ,int startMonth ,int endYear ,int endDay ,int endMonth ,int searchYear ,int searchDay ,int searchMonth );
+
+
+//Global Variables
 int  attempts = 0 ;
 char user_given [50];
+
+//Global struct
 struct sign_up {
 
     char first_name [50];
@@ -37,7 +50,7 @@ struct add_income {
 
 }; struct add_income inc ;
 
-struct add_income *startInc , *endInc , *tempInc ;
+struct add_income *startInc , *endInc , *tempInc ; //for income linkedlist
 
 struct add_expenses {
 
@@ -52,7 +65,7 @@ struct add_expenses {
 
 }; struct add_expenses exp ;
 
-struct add_expenses *startExp , *endExp , *tempExp ;
+struct add_expenses *startExp , *endExp , *tempExp ; //for expenses linkedlist
 
 
 
@@ -463,151 +476,6 @@ void main_menu ()
 
 }
 
-int check_chracter  ( char name[50] )    //this function check string is alphabet , for alphabet return 1
-{
-    int i , contain , sum= 0  ;
-    contain = strlen(name) ;
-    strupr(name);
-    for (i= 0 ; i <= contain ; i++ )
-    {
-         sum = sum + isalpha(name[i]) ;
-    }
-    strlwr(name);
-    if ( sum ==  contain  )
-        return 1 ;
-    else
-        return 0 ;
-
-}
-int check_digit (char digit[] ) //this function check input is digit , for digit return 1
-{
-    int i , contain , sum= 0  ;
-
-    contain = strlen(digit) ;
-    for (i= 0 ; i <= contain ; i++ )
-    {
-        if ( 1 == isdigit(digit[i]))
-            sum ++ ;
-    }
-    if ( sum == contain )
-        return 1 ;
-    else
-        return 0 ;
-}
-int unique_username (char user [50])
-{
-    FILE *fp ;
-    fp = fopen("profiles.txt" , "r") ;
-    fread(&std,sizeof(struct sign_up) , 1 , fp ) ;
-    rewind(fp);
-    while (fread(&std,sizeof(std) , 1 , fp )== 1)
-    {
-        if (strcmp(user,std.username) == 0) // if user name is unique - this func return 1
-            return 1 ;
-        else
-            return 0 ;
-    }
-
-}
-int check_pass (char pass [50])
-{
-    int i , upper= 0 , lowwer =0 , digit =0 , special_ch = 0 ;
-    char re_password [50] ;
-    if ( 5 > strlen(pass))
-        //printf("password must be more than 5 character \n");
-        MessageBox(0,"password must be more than 5 character!\nPlease Try again!","Error!!",0);
-
-        else if ( 50 < strlen(pass))
-            //printf("Error: Password shouldn't exceed 50 characters ");
-            MessageBox(0,"Password shouldn't exceed 50 characters!\nPlease Try again!","Error!!",0);
-    for ( i = 0 ;i < strlen(pass) ; i ++)
-    {
-        if (pass[i]>= 'A' && pass[i]<= 'Z')
-            upper++ ;
-        if (pass[i]>= 'a' && pass[i]<= 'z')
-            lowwer++ ;
-        if (pass[i]>= '0' && pass[i]<= '9')
-            digit++ ;
-        if (pass[i]== '@' || pass[i]== '!' ||pass[i]== '.' || pass[i]== '$' || pass[i]== '#' || pass[i]== '*' || pass[i]== '%' )
-            special_ch++ ;
-    }
-    if (upper==0)
-        //printf("There must be at least one Uppercase\n");
-        MessageBox(0,"There must be at least one Uppercase!\nPlease Try again!","Error!!",0);
-    if (lowwer==0)
-        //printf("There must be at least one Lowercase\n");
-        MessageBox(0,"There must be at least one Lowercase!\nPlease Try again!","Error!!",0);
-    if (digit==0)
-        //printf("There must be at least one Digit\n");
-        MessageBox(0,"There must be at least one Digit!\nPlease Try again!","Error!!",0);
-    if (special_ch==0)
-       // printf("There must be at least one Special Character\n");
-        MessageBox(0,"There must be at least one Special Character!\nPlease Try again!","Error!!",0);
-    else
-    {
-        do
-        {
-            printf("\n\xDB\xDB\xDB\xDB\xB2 Confirm your Password : ");
-            char starRePass [50] , d = ' ';
-            int b = 0 ;
-            while (b<50) // print * instead paswword
-            {
-                starRePass[b] = getch();
-                d = starRePass[b];
-                if (d==13)
-                    break ;
-                printf("*");
-                b++;
-            }
-            starRePass[b] = '\0';
-            b = 0;
-            strcpy(re_password , starRePass );
-            printf("\n");
-            if(strcmp(re_password,pass)== 1 || strlen(pass) != strlen(re_password) )
-            //printf("Password did not match\n");
-            MessageBox(0,"Password did not match!\nPlease Try again!","Error!!",0);
-        } while ( strcmp(re_password,pass)== 1 || strlen(pass) != strlen(re_password)) ;
-
-    }
-
-
-    if ( 5 > strlen(pass) || 50 < strlen(pass) || upper==0 || lowwer==0 || digit==0 || special_ch==0 || strcmp(re_password,pass)== 1 )
-        return 0 ;
-    else
-        return 1 ; // if return 1 , password is good ...
-
-}
-
-int check_email (char email [50]) //if func return 1 , email is valid
-{
-    int i , contain , adsign = 0  , dot =0;
-    contain = strlen(email);
-    if(isalpha(email[0])== 0)
-        //printf("The email address must be start with letter ! \n");
-        MessageBox(0,"The email address must be start with letter !\nPlease Try again!","Error!!",0);
-    for (i=0 ; i < contain ; i++)
-    {
-        if (email[i] == '@' )
-            adsign = 1;
-        if (email[i] == '.' )
-            dot = 1 ;
-
-    }
-
-    if (adsign == 0 || dot == 0)
-        //printf("The email address must be have @ and DOT. \n");
-        MessageBox(0,"The email address must be have @ and DOT. !\nPlease Try again!","Error!!",0);
-    if  (email[contain]== '.')
-        //printf("dot can not be in the last character of the email.\n");
-        MessageBox(0,"dot can not be in the last character of the email.!\nPlease Try again!","Error!!",0);
-    if  (contain <= 7 )
-        //printf("email must be more than 7 character \n");
-        MessageBox(0,"email must be more than 7 character !\nPlease Try again!","Error!!",0);
-    if (isalpha(email[0])== 0 || adsign == 0 || dot == 0 || email[contain]== '.' || contain <= 7 )
-        return 0 ;
-    else
-        return 1 ;
-}
 void income()
 {
     char choice ;
@@ -938,167 +806,6 @@ void statistics ()
             break ;
 	}
 
-
-}
-
-void settings ()
-{
-    char choice ;
-    printf("                            \xDB\xDB\xDB\xDB\xB2 Hello %s \n " , user_given ) ;
-    printf("                           \xDB\xDB\xDB\xDB\xB2 Do you want to edit your profile ? [Y/N] : ") ;
-    choice = getch();
-    choice=toupper(choice);
-    if (choice ==  'Y')
-    {
-        FILE *fp , *newRec  ;
-        fp = fopen("profiles.txt" , "r") ;
-        newRec = fopen("temp.txt", "w" ) ;
-
-        if (fp == NULL  || newRec == NULL )
-        {
-            printf("File could not be opened");
-
-        }
-
-        // get user data
-        else
-        {
-            while(fread(&std,sizeof(struct sign_up) , 1 , fp )== 1)
-            {
-                if ( strcmp (std.username,user_given)==0 )
-                {
-                    printf("\n");
-                    printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
-                    printf("\n                          * 1-First and last name must be more than 2 character   *     ");
-                    printf("\n                          * 2-First and last name can not be non-alphabet!        *     ");
-                    printf("\n                          * 3-National code must be 10 digit and all Digit        *     ");
-                    printf("\n                          * 4-Phone number must be started with 09xxx and         *     ");
-                    printf("\n                          *  11 digit and all digit                               *     ");
-                    printf("\n                          * 5- Email format must have @ and Dot /  cant start     *     ");
-                    printf("\n                          *  with letters / dot can not be in the last character  *     ");
-                    printf("\n                          *  of the email / must be more than 7 character         *     ");
-                    printf("\n                          *                                                       *     ");
-                    printf("\n                          * 6-Password :  must be more than 5 character           *     ");
-                    printf("\n                          *               shouldn't exceed 50 characters          *     ");
-                    printf("\n                          *               be at least one Uppercase               *     ");
-                    printf("\n                          *               be at least one Lowercase               *     ");
-                    printf("\n                          *               be at least one Digit                   *     ");
-                    printf("\n                          *               be at least one Special Character       *     ");
-                    printf("\n                          *                                                       *     ");
-                    printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
-                    printf("\n\n");
-                    do
-                    {
-                        printf("\xDB\xDB\xDB\xDB\xB2 First name : ");
-                        scanf("%s", &std.first_name);
-                        printf("\n");
-                        if ( strlen(std.first_name) <= 2 ) // bishtar az 2 harf
-                            //printf("First name is too short\n") ;
-                            MessageBox(0,"Your First name is too short!\nPlease Try again!","Error!!",0);
-                        if (check_chracter(std.first_name)== 0) // hame harfa ch
-                            //printf("Your first name Cant be non-alphabet \n");
-                            MessageBox(0,"Your first name Cant be non-alphabet!\nPlease Try again!","Error!!",0);
-                    } while (check_chracter(std.first_name)== 0 || strlen(std.first_name) <= 2 );
-
-                    do
-                    {
-                        printf("\xDB\xDB\xDB\xDB\xB2 Last name : ");
-                        scanf("%s", &std.last_name);
-                        printf("\n");
-                        if ( strlen(std.last_name) <= 2 )
-                            //printf("last name is too short\n") ;
-                            MessageBox(0,"last name is too short!\nPlease Try again!","Error!!",0);
-                        if (check_chracter(std.last_name)== 0)
-                            //printf("Your latt name Cant be non-alphabet \n");
-                            MessageBox(0,"Your Last name Cant be non-alphabet!\nPlease Try again!","Error!!",0);
-                    } while (check_chracter(std.last_name)== 0 || strlen(std.last_name) <= 2 );
-
-                    do
-                    {
-                        printf("\xDB\xDB\xDB\xDB\xB2 National_code : ");
-                        scanf("%s", &std.national_code);
-                        printf("\n");
-                        if (strlen(std.national_code) !=  10)
-                            //printf("National code must be 10 digit\n");
-                            MessageBox(0,"National code must be 10 digit!\nPlease Try again!","Error!!",0);
-                        if (check_digit(std.national_code) == 0)
-                           // printf("Just digit allowed \n");
-                            MessageBox(0,"Just digit allowed !\nPlease Try again!","Error!!",0);
-                    } while (check_digit(std.national_code) == 0 || strlen(std.national_code) !=  10 ); // is digit 0 = non digit
-
-                    do
-                    {
-                        printf("\xDB\xDB\xDB\xDB\xB2 Phone_number : ");
-                        scanf("%s", &std.phone_number);
-                        printf("\n");
-                        if (strlen(std.phone_number) !=  11)
-                           // printf("phone number must be 11 digit\n");
-                            MessageBox(0,"phone number must be 11 digit\nPlease Try again!","Error!!",0);
-                        if (check_digit(std.phone_number) == 0 )
-                            //printf("just digit allowed \n");
-                            MessageBox(0,"just digit allowed !\nPlease Try again!","Error!!",0);
-                        if  (std.phone_number[0] != '0' || std.phone_number[1] != '9' )
-                            //printf("The phone number must be start 09xxxxxxxxx \n") ;
-                            MessageBox(0,"The phone number must be start 09xxxxxxxxx!\nPlease Try again!","Error!!",0);
-                    } while ( check_digit(std.phone_number) ==0 || strlen(std.phone_number) !=  11 || std.phone_number[0] != '0' || std.phone_number[1] != '9' ) ;
-
-                    do
-                    {
-                        printf("\xDB\xDB\xDB\xDB\xB2 Mail : ");
-                        scanf("%s", &std.mail);
-                        printf("\n");
-                    } while (check_email(std.mail) == 0 ) ;
-
-                    strcpy(std.username , user_given ) ;
-
-                    do
-                    {
-                        printf("\xDB\xDB\xDB\xDB\xB2 Password : ");
-                        char starPass [50] , c = ' ';
-                        int i = 0 ;
-                        while (i<50) // print * instead paswword
-                            {
-                                starPass[i] = getch();
-                                c = starPass[i];
-                                if (c==13)
-                                    break ;
-                                printf("*");
-                                i++;
-                            }
-                            starPass[i] = '\0';
-                            i = 0;
-                            printf("\n");
-                        strcpy(std.password , starPass );
-                        printf("\n");
-
-                    } while (check_pass(std.password) == 0 ) ;
-
-                }
-            fwrite(&std , sizeof (struct sign_up) , 1 , newRec );
-
-            }
-
-            fclose(fp);
-            fclose(newRec);
-
-            fp = fopen("profiles.txt" , "w") ;
-            newRec = fopen("temp.txt", "r" ) ;
-            while (fread(&std,sizeof(struct sign_up) , 1 , newRec )== 1)
-            {
-                fwrite(&std,sizeof(struct sign_up) , 1 , fp ) ;
-            }
-            fclose(fp);
-            fclose(newRec);
-            printf("\n            \xDB\xDB\xDB\xDB\xB2 Successfully edited.\n") ;
-        }
-
-    }
-        else
-            {
-                system("cls");
-                main_menu();
-
-            }
 
 }
 
@@ -2707,111 +2414,169 @@ void expensesReports ()
 
 }
 
-// Check Date algorithm => image is here : https://postimg.cc/hQRr7msv
-
-int checkDate (int startYear , int startDay ,int startMonth ,int endYear ,int endDay ,int endMonth ,int searchYear ,int searchDay ,int searchMonth )
+void settings ()
 {
-    int valid = 0 ;
-            if (searchYear > startYear)
+    char choice ;
+    printf("                            \xDB\xDB\xDB\xDB\xB2 Hello %s \n " , user_given ) ;
+    printf("                           \xDB\xDB\xDB\xDB\xB2 Do you want to edit your profile ? [Y/N] : ") ;
+    choice = getch();
+    choice=toupper(choice);
+    if (choice ==  'Y')
+    {
+        FILE *fp , *newRec  ;
+        fp = fopen("profiles.txt" , "r") ;
+        newRec = fopen("temp.txt", "w" ) ;
+
+        if (fp == NULL  || newRec == NULL )
+        {
+            printf("File could not be opened");
+
+        }
+
+        // get user data
+        else
+        {
+            while(fread(&std,sizeof(struct sign_up) , 1 , fp )== 1)
             {
-                if (searchYear < endYear )
-                    valid = 1 ;
+                if ( strcmp (std.username,user_given)==0 )
+                {
+                    printf("\n");
+                    printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+                    printf("\n                          * 1-First and last name must be more than 2 character   *     ");
+                    printf("\n                          * 2-First and last name can not be non-alphabet!        *     ");
+                    printf("\n                          * 3-National code must be 10 digit and all Digit        *     ");
+                    printf("\n                          * 4-Phone number must be started with 09xxx and         *     ");
+                    printf("\n                          *  11 digit and all digit                               *     ");
+                    printf("\n                          * 5- Email format must have @ and Dot /  cant start     *     ");
+                    printf("\n                          *  with letters / dot can not be in the last character  *     ");
+                    printf("\n                          *  of the email / must be more than 7 character         *     ");
+                    printf("\n                          *                                                       *     ");
+                    printf("\n                          * 6-Password :  must be more than 5 character           *     ");
+                    printf("\n                          *               shouldn't exceed 50 characters          *     ");
+                    printf("\n                          *               be at least one Uppercase               *     ");
+                    printf("\n                          *               be at least one Lowercase               *     ");
+                    printf("\n                          *               be at least one Digit                   *     ");
+                    printf("\n                          *               be at least one Special Character       *     ");
+                    printf("\n                          *                                                       *     ");
+                    printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+                    printf("\n\n");
+                    do
+                    {
+                        printf("\xDB\xDB\xDB\xDB\xB2 First name : ");
+                        scanf("%s", &std.first_name);
+                        printf("\n");
+                        if ( strlen(std.first_name) <= 2 ) // bishtar az 2 harf
+                            //printf("First name is too short\n") ;
+                            MessageBox(0,"Your First name is too short!\nPlease Try again!","Error!!",0);
+                        if (check_chracter(std.first_name)== 0) // hame harfa ch
+                            //printf("Your first name Cant be non-alphabet \n");
+                            MessageBox(0,"Your first name Cant be non-alphabet!\nPlease Try again!","Error!!",0);
+                    } while (check_chracter(std.first_name)== 0 || strlen(std.first_name) <= 2 );
+
+                    do
+                    {
+                        printf("\xDB\xDB\xDB\xDB\xB2 Last name : ");
+                        scanf("%s", &std.last_name);
+                        printf("\n");
+                        if ( strlen(std.last_name) <= 2 )
+                            //printf("last name is too short\n") ;
+                            MessageBox(0,"last name is too short!\nPlease Try again!","Error!!",0);
+                        if (check_chracter(std.last_name)== 0)
+                            //printf("Your latt name Cant be non-alphabet \n");
+                            MessageBox(0,"Your Last name Cant be non-alphabet!\nPlease Try again!","Error!!",0);
+                    } while (check_chracter(std.last_name)== 0 || strlen(std.last_name) <= 2 );
+
+                    do
+                    {
+                        printf("\xDB\xDB\xDB\xDB\xB2 National_code : ");
+                        scanf("%s", &std.national_code);
+                        printf("\n");
+                        if (strlen(std.national_code) !=  10)
+                            //printf("National code must be 10 digit\n");
+                            MessageBox(0,"National code must be 10 digit!\nPlease Try again!","Error!!",0);
+                        if (check_digit(std.national_code) == 0)
+                           // printf("Just digit allowed \n");
+                            MessageBox(0,"Just digit allowed !\nPlease Try again!","Error!!",0);
+                    } while (check_digit(std.national_code) == 0 || strlen(std.national_code) !=  10 ); // is digit 0 = non digit
+
+                    do
+                    {
+                        printf("\xDB\xDB\xDB\xDB\xB2 Phone_number : ");
+                        scanf("%s", &std.phone_number);
+                        printf("\n");
+                        if (strlen(std.phone_number) !=  11)
+                           // printf("phone number must be 11 digit\n");
+                            MessageBox(0,"phone number must be 11 digit\nPlease Try again!","Error!!",0);
+                        if (check_digit(std.phone_number) == 0 )
+                            //printf("just digit allowed \n");
+                            MessageBox(0,"just digit allowed !\nPlease Try again!","Error!!",0);
+                        if  (std.phone_number[0] != '0' || std.phone_number[1] != '9' )
+                            //printf("The phone number must be start 09xxxxxxxxx \n") ;
+                            MessageBox(0,"The phone number must be start 09xxxxxxxxx!\nPlease Try again!","Error!!",0);
+                    } while ( check_digit(std.phone_number) ==0 || strlen(std.phone_number) !=  11 || std.phone_number[0] != '0' || std.phone_number[1] != '9' ) ;
+
+                    do
+                    {
+                        printf("\xDB\xDB\xDB\xDB\xB2 Mail : ");
+                        scanf("%s", &std.mail);
+                        printf("\n");
+                    } while (check_email(std.mail) == 0 ) ;
+
+                    strcpy(std.username , user_given ) ;
+
+                    do
+                    {
+                        printf("\xDB\xDB\xDB\xDB\xB2 Password : ");
+                        char starPass [50] , c = ' ';
+                        int i = 0 ;
+                        while (i<50) // print * instead paswword
+                            {
+                                starPass[i] = getch();
+                                c = starPass[i];
+                                if (c==13)
+                                    break ;
+                                printf("*");
+                                i++;
+                            }
+                            starPass[i] = '\0';
+                            i = 0;
+                            printf("\n");
+                        strcpy(std.password , starPass );
+                        printf("\n");
+
+                    } while (check_pass(std.password) == 0 ) ;
+
+                }
+            fwrite(&std , sizeof (struct sign_up) , 1 , newRec );
+
             }
 
-            if (searchYear > startYear)
-            {
-                if(searchYear == endYear )
-                {
-                    if (searchMonth < endMonth)
-                        valid = 1 ;
-                }
-            }
-            if (searchYear > startYear)
-            {
-                if(searchYear == endYear )
-                {
-                    if (searchMonth == endMonth)
-                    {
-                        if (searchDay <= endDay)
-                            valid = 1 ;
-                    }
-                }
-            }
-            if (searchYear == startYear )
-            {
-                if (searchYear == endYear)
-                {
-                    if (searchMonth == startMonth)
-                    {
-                        if (searchMonth == endMonth)
-                        {
-                            if (searchDay >= startDay && searchDay <= endDay )
-                                valid = 1 ;
-                        }
-                    }
-                }
-            }
+            fclose(fp);
+            fclose(newRec);
 
-          if (searchYear == startYear )
+            fp = fopen("profiles.txt" , "w") ;
+            newRec = fopen("temp.txt", "r" ) ;
+            while (fread(&std,sizeof(struct sign_up) , 1 , newRec )== 1)
             {
-                if (searchYear == endYear)
-                {
-                    if (searchMonth == startMonth)
-                    {
-                        if (searchMonth < endMonth)
-                        {
-                            if (searchDay >= startDay )
-                                valid = 1 ;
-                        }
-                    }
-                }
+                fwrite(&std,sizeof(struct sign_up) , 1 , fp ) ;
             }
-            if (searchYear == startYear )
-            {
-                if (searchYear == endYear)
-                {
-                    if (searchMonth > startMonth)
-                    {
-                        if (searchMonth == endMonth)
-                        {
-                            if (searchDay <= startDay )
-                                valid = 1 ;
-                        }
-                    }
-                }
-            }
-            if (searchYear == startYear )
-            {
-                if (searchYear == endYear)
-                {
-                    if (searchMonth > startMonth)
-                    {
-                        if (searchMonth < endMonth)
-                            valid = 1 ;
-                    }
-                }
-            }
-            if (searchYear == startYear )
-            {
-                if (searchYear < endYear)
-                {
-                    if (searchMonth == startMonth)
-                    {
-                        if (searchDay >= startDay)
-                            valid = 1 ;
-                    }
-                }
-            }
-            if (searchYear == startYear )
-            {
-                if (searchYear < endYear)
-                {
-                    if (searchMonth > startMonth)
-                        valid = 1 ;
-                }
-            }
+            fclose(fp);
+            fclose(newRec);
+            printf("\n            \xDB\xDB\xDB\xDB\xB2 Successfully edited.\n") ;
+            printf("\n            \xDB\xDB\xDB\xDB\xB2 You must login again.\n") ;
+            Sleep(3000);
+            system("cls");
+            main();
 
-            return valid ;
+        }
+
+    }
+        else
+            {
+                system("cls");
+                main_menu();
+
+            }
 
 }
 
@@ -3282,5 +3047,253 @@ void balanceReports ()
 
 }
 
+int check_chracter  ( char name[50] )    //this function check string is alphabet , for alphabet return 1
+{
+    int i , contain , sum= 0  ;
+    contain = strlen(name) ;
+    strupr(name);
+    for (i= 0 ; i <= contain ; i++ )
+    {
+         sum = sum + isalpha(name[i]) ;
+    }
+    strlwr(name);
+    if ( sum ==  contain  )
+        return 1 ;
+    else
+        return 0 ;
+
+}
+int check_digit (char digit[] ) //this function check input is digit , for digit return 1
+{
+    int i , contain , sum= 0  ;
+
+    contain = strlen(digit) ;
+    for (i= 0 ; i <= contain ; i++ )
+    {
+        if ( 1 == isdigit(digit[i]))
+            sum ++ ;
+    }
+    if ( sum == contain )
+        return 1 ;
+    else
+        return 0 ;
+}
+int unique_username (char user [50])
+{
+    FILE *fp ;
+    fp = fopen("profiles.txt" , "r") ;
+    fread(&std,sizeof(struct sign_up) , 1 , fp ) ;
+    rewind(fp);
+    while (fread(&std,sizeof(std) , 1 , fp )== 1)
+    {
+        if (strcmp(user,std.username) == 0) // if user name is unique - this func return 1
+            return 1 ;
+        else
+            return 0 ;
+    }
+
+}
+int check_pass (char pass [50])
+{
+    int i , upper= 0 , lowwer =0 , digit =0 , special_ch = 0 ;
+    char re_password [50] ;
+    if ( 5 > strlen(pass))
+        //printf("password must be more than 5 character \n");
+        MessageBox(0,"password must be more than 5 character!\nPlease Try again!","Error!!",0);
+
+        else if ( 50 < strlen(pass))
+            //printf("Error: Password shouldn't exceed 50 characters ");
+            MessageBox(0,"Password shouldn't exceed 50 characters!\nPlease Try again!","Error!!",0);
+    for ( i = 0 ;i < strlen(pass) ; i ++)
+    {
+        if (pass[i]>= 'A' && pass[i]<= 'Z')
+            upper++ ;
+        if (pass[i]>= 'a' && pass[i]<= 'z')
+            lowwer++ ;
+        if (pass[i]>= '0' && pass[i]<= '9')
+            digit++ ;
+        if (pass[i]== '@' || pass[i]== '!' ||pass[i]== '.' || pass[i]== '$' || pass[i]== '#' || pass[i]== '*' || pass[i]== '%' )
+            special_ch++ ;
+    }
+    if (upper==0)
+        //printf("There must be at least one Uppercase\n");
+        MessageBox(0,"There must be at least one Uppercase!\nPlease Try again!","Error!!",0);
+    if (lowwer==0)
+        //printf("There must be at least one Lowercase\n");
+        MessageBox(0,"There must be at least one Lowercase!\nPlease Try again!","Error!!",0);
+    if (digit==0)
+        //printf("There must be at least one Digit\n");
+        MessageBox(0,"There must be at least one Digit!\nPlease Try again!","Error!!",0);
+    if (special_ch==0)
+       // printf("There must be at least one Special Character\n");
+        MessageBox(0,"There must be at least one Special Character!\nPlease Try again!","Error!!",0);
+    else
+    {
+        do
+        {
+            printf("\n\xDB\xDB\xDB\xDB\xB2 Confirm your Password : ");
+            char starRePass [50] , d = ' ';
+            int b = 0 ;
+            while (b<50) // print * instead paswword
+            {
+                starRePass[b] = getch();
+                d = starRePass[b];
+                if (d==13)
+                    break ;
+                printf("*");
+                b++;
+            }
+            starRePass[b] = '\0';
+            b = 0;
+            strcpy(re_password , starRePass );
+            printf("\n");
+            if(strcmp(re_password,pass)== 1 || strlen(pass) != strlen(re_password) )
+            //printf("Password did not match\n");
+            MessageBox(0,"Password did not match!\nPlease Try again!","Error!!",0);
+        } while ( strcmp(re_password,pass)== 1 || strlen(pass) != strlen(re_password)) ;
+
+    }
 
 
+    if ( 5 > strlen(pass) || 50 < strlen(pass) || upper==0 || lowwer==0 || digit==0 || special_ch==0 || strcmp(re_password,pass)== 1 )
+        return 0 ;
+    else
+        return 1 ; // if return 1 , password is good ...
+
+}
+int check_email (char email [50]) //if func return 1 , email is valid
+{
+    int i , contain , adsign = 0  , dot =0;
+    contain = strlen(email);
+    if(isalpha(email[0])== 0)
+        //printf("The email address must be start with letter ! \n");
+        MessageBox(0,"The email address must be start with letter !\nPlease Try again!","Error!!",0);
+    for (i=0 ; i < contain ; i++)
+    {
+        if (email[i] == '@' )
+            adsign = 1;
+        if (email[i] == '.' )
+            dot = 1 ;
+
+    }
+
+    if (adsign == 0 || dot == 0)
+        //printf("The email address must be have @ and DOT. \n");
+        MessageBox(0,"The email address must be have @ and DOT. !\nPlease Try again!","Error!!",0);
+    if  (email[contain]== '.')
+        //printf("dot can not be in the last character of the email.\n");
+        MessageBox(0,"dot can not be in the last character of the email.!\nPlease Try again!","Error!!",0);
+    if  (contain <= 7 )
+        //printf("email must be more than 7 character \n");
+        MessageBox(0,"email must be more than 7 character !\nPlease Try again!","Error!!",0);
+    if (isalpha(email[0])== 0 || adsign == 0 || dot == 0 || email[contain]== '.' || contain <= 7 )
+        return 0 ;
+    else
+        return 1 ;
+}
+// Check Date algorithm => image is here : https://postimg.cc/hQRr7msv
+int checkDate (int startYear , int startDay ,int startMonth ,int endYear ,int endDay ,int endMonth ,int searchYear ,int searchDay ,int searchMonth )
+{
+    int valid = 0 ;
+            if (searchYear > startYear)
+            {
+                if (searchYear < endYear )
+                    valid = 1 ;
+            }
+
+            if (searchYear > startYear)
+            {
+                if(searchYear == endYear )
+                {
+                    if (searchMonth < endMonth)
+                        valid = 1 ;
+                }
+            }
+            if (searchYear > startYear)
+            {
+                if(searchYear == endYear )
+                {
+                    if (searchMonth == endMonth)
+                    {
+                        if (searchDay <= endDay)
+                            valid = 1 ;
+                    }
+                }
+            }
+            if (searchYear == startYear )
+            {
+                if (searchYear == endYear)
+                {
+                    if (searchMonth == startMonth)
+                    {
+                        if (searchMonth == endMonth)
+                        {
+                            if (searchDay >= startDay && searchDay <= endDay )
+                                valid = 1 ;
+                        }
+                    }
+                }
+            }
+
+          if (searchYear == startYear )
+            {
+                if (searchYear == endYear)
+                {
+                    if (searchMonth == startMonth)
+                    {
+                        if (searchMonth < endMonth)
+                        {
+                            if (searchDay >= startDay )
+                                valid = 1 ;
+                        }
+                    }
+                }
+            }
+            if (searchYear == startYear )
+            {
+                if (searchYear == endYear)
+                {
+                    if (searchMonth > startMonth)
+                    {
+                        if (searchMonth == endMonth)
+                        {
+                            if (searchDay <= startDay )
+                                valid = 1 ;
+                        }
+                    }
+                }
+            }
+            if (searchYear == startYear )
+            {
+                if (searchYear == endYear)
+                {
+                    if (searchMonth > startMonth)
+                    {
+                        if (searchMonth < endMonth)
+                            valid = 1 ;
+                    }
+                }
+            }
+            if (searchYear == startYear )
+            {
+                if (searchYear < endYear)
+                {
+                    if (searchMonth == startMonth)
+                    {
+                        if (searchDay >= startDay)
+                            valid = 1 ;
+                    }
+                }
+            }
+            if (searchYear == startYear )
+            {
+                if (searchYear < endYear)
+                {
+                    if (searchMonth > startMonth)
+                        valid = 1 ;
+                }
+            }
+
+            return valid ;
+
+}
