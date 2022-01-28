@@ -16,6 +16,8 @@ int check_pass (char pass [50]);
 int check_email (char email [50]);
 int checkDate (int startYear , int startDay ,int startMonth ,int endYear ,int endDay ,int endMonth ,int searchYear ,int searchDay ,int searchMonth );
 void exitApp(void) ;
+void timer (void) ;
+
 
 //Global Variables
 int  attempts = 0 ;
@@ -87,6 +89,8 @@ void main ()
 	printf("\n                          *                                                 *     ");
 	printf("\n                          *                                                 *     ");
 	printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+    printf("\n                           \xDB\xDB\xDB\xDB\xB2 ");
+    timer();
 	printf("\n\n");
 	printf("                           \xDB\xDB\xDB\xDB\xB2 1. Sign Up!   ");
 	printf("\n\n");

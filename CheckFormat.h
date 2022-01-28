@@ -244,5 +244,11 @@ void exitApp(void)
             Sleep(3000);
             exit(0);
 }
+void timer (void)
+{
+    time_t curtime;
 
+   time(&curtime);
 
+   printf("Current time = %s", ctime(&curtime));
+}
