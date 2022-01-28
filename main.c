@@ -15,7 +15,7 @@ int unique_username (char user [50]);
 int check_pass (char pass [50]);
 int check_email (char email [50]);
 int checkDate (int startYear , int startDay ,int startMonth ,int endYear ,int endDay ,int endMonth ,int searchYear ,int searchDay ,int searchMonth );
-
+void exitApp(void) ;
 
 //Global Variables
 int  attempts = 0 ;
@@ -96,6 +96,7 @@ void main ()
 	printf("\n\n");
 	printf("                           \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
 	choice = getche();
+    Beep(6600,100);
 	choice=toupper(choice);
 	switch(choice)
 	{
@@ -110,24 +111,7 @@ void main ()
             login();
             break;
         case '3':
-            system("COLOR b");
-            system("cls");
-            printf("\n\n\n\n\n");
-            printf("\n");
-            printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *      | Thank You For using this Soft-ware |     *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
-            Sleep(3000);
-            exit(0);
+            exitApp();
             break;
         default :
             MessageBox(0,"Enter Valid Number!\nPlease Try again!","Error!!",0);
@@ -178,6 +162,7 @@ void signup ()
         {
             printf("\xDB\xDB\xDB\xDB\xB2 First name : ");
             scanf("%s", &std.first_name);
+            Beep(6600,100);
             printf("\n");
             if ( strlen(std.first_name) <= 2 ) // bishtar az 2 harf
                 //printf("First name is too short\n") ;
@@ -191,6 +176,7 @@ void signup ()
         {
             printf("\xDB\xDB\xDB\xDB\xB2 Last name : ");
             scanf("%s", &std.last_name);
+            Beep(6600,100);
             printf("\n");
             if ( strlen(std.last_name) <= 2 )
                 //printf("last name is too short\n") ;
@@ -204,6 +190,7 @@ void signup ()
         {
             printf("\xDB\xDB\xDB\xDB\xB2 National_code : ");
             scanf("%s", &std.national_code);
+            Beep(6600,100);
             printf("\n");
             if (strlen(std.national_code) !=  10)
                 //printf("National code must be 10 digit\n");
@@ -217,6 +204,7 @@ void signup ()
         {
             printf("\xDB\xDB\xDB\xDB\xB2 Phone_number : ");
             scanf("%s", &std.phone_number);
+            Beep(6600,100);
             printf("\n");
             if (strlen(std.phone_number) !=  11)
                // printf("phone number must be 11 digit\n");
@@ -233,6 +221,7 @@ void signup ()
         {
             printf("\xDB\xDB\xDB\xDB\xB2 Mail : ");
             scanf("%s", &std.mail);
+            Beep(6600,100);
             printf("\n");
         } while (check_email(std.mail) == 0 ) ;
 
@@ -240,6 +229,7 @@ void signup ()
         {
             printf("\xDB\xDB\xDB\xDB\xB2 Username : ");
             scanf("%s", &std.username);
+            Beep(6600,100);
             printf("\n");
             if (strlen(std.username) <= 2 ) // bishtar az 2 harf
                 //printf("Username must be more than 2 character \n") ;
@@ -277,6 +267,7 @@ void signup ()
     printf("\n");
     printf("\xDB\xDB\xDB\xDB\xB2 Do your want add another record ? [y / n] ") ;
 	choice = getch();
+	Beep(6600,100);
 	choice=toupper(choice);
         switch (choice)
         {
@@ -297,6 +288,7 @@ void signup ()
 }
 void login ()
 {
+    system("cls");
     printf("\n\n\n");
     printf("\n                              *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
     printf("\n                              *                                                 *     ");
@@ -305,11 +297,12 @@ void login ()
     printf("\n                              *                                                 *     ");
     printf("\n                              *                                                 *     ");
     printf("\n                              *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
-    printf("\n\n                           \xDB\xDB\xDB\xDB\xB2 Be careful! only allowed 5 attempts. (%d/5) " , attempts+1 );
+    printf("\n\n                           \xDB\xDB\xDB\xDB\xB2 Be careful! only allowed 7 attempts. (%d/7) " , attempts+1 );
     char pass_given [50] , c = ' ';
     int i = 0  , j = 0 ;
     printf("\n\n\n                           \xDB\xDB\xDB\xDB\xB2 Please enter your username: ");
     scanf("%s",&user_given);
+    Beep(6600,100);
     FILE *fp ;
     fp = fopen("profiles.txt" , "r") ;
     if (fp == NULL )
@@ -321,7 +314,7 @@ void login ()
     {
         if( attempts > 5  )
         {
-            printf("Sorry, only allowed 5 attempts.\n ");
+            printf("Sorry, only allowed 7 attempts.\n ");
             Sleep(3000);
             for (j = 0 ; j <= 900 ; j++)
             {
@@ -335,6 +328,7 @@ void login ()
                 printf("\n                          *                                                 *     ");
                 printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
                 Sleep(1000);
+                Beep(6600,100);
                 system("cls");
 
             }
@@ -418,6 +412,7 @@ void main_menu ()
     printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
 	printf("\n\n\n                          \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
 	choice = getche();
+	Beep(6600,100);
 	choice=toupper(choice);
 	switch(choice)
 	{
@@ -447,24 +442,7 @@ void main_menu ()
             main ();
             break;
         case '6':
-            system("COLOR b");
-            system("cls");
-            printf("\n\n\n\n\n");
-            printf("\n");
-            printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *      | Thank You For using this Soft-ware |     *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
-            Sleep(3000);
-            exit(0);
+            exitApp();
             break;
         default :
             MessageBox(0,"Enter Valid Number!\nPlease Try again!","Error!!",0);
@@ -506,6 +484,7 @@ void income()
             printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
             printf("\n\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
             choice = getche();
+            Beep(6600,100);
             choice=toupper(choice);
             switch(choice)
             {
@@ -634,6 +613,7 @@ void expenses ()
             printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
             printf("\n\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
             choice = getche();
+            Beep(6600,100);
             choice=toupper(choice);
             switch(choice)
             {
@@ -670,6 +650,7 @@ void expenses ()
             {
                 printf("\n                     \xDB\xDB\xDB\xDB\xB2 Please specify the amount of expens (Rial): ");
                 scanf("%s",&exp.amount);
+                Beep(6600,100);
                 if (strlen(exp.amount) <= 2)
                     printf("                     \xDB\xDB\xDB\xDB\xB2 amount must be more than 2 digit\n");
                 if (check_digit(exp.amount) == 0)
@@ -714,6 +695,7 @@ void expenses ()
         }
     printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 Do you want to enter another Record ? [y/n] ") ;
 	choice = getche();
+	Beep(6600,100);
 	choice=toupper(choice);
     switch (choice)
     {
@@ -756,6 +738,7 @@ void statistics ()
     printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
     printf("\n\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
 	choice = getche();
+	Beep(6600,100);
 	choice=toupper(choice);
 	switch(choice)
 	{
@@ -780,24 +763,7 @@ void statistics ()
             main_menu ();
             break;
         case '5':
-            system("COLOR b");
-            system("cls");
-            printf("\n\n\n\n\n");
-            printf("\n");
-            printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *         | Thank You For using the app |         *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *                                                 *     ");
-            printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
-            Sleep(3000);
-            exit(0);
+            exitApp();
             break;
         default :
             MessageBox(0,"Enter Valid Number!\nPlease Try again!","Error!!",0);
@@ -915,6 +881,7 @@ void incomeReports()
     printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
     printf("\n\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
 	choice = getche();
+	Beep(6600,100);
 	printf("\n");
     if ( choice == '1' )
     {
@@ -1109,6 +1076,7 @@ void incomeReports()
             printf("\n\n");
             printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
             select = getche();
+            Beep(6600,100);
             switch(select)
             {
                 case '1':
@@ -1658,6 +1626,7 @@ void expensesReports ()
     printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
     printf("\n\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
 	choice = getche();
+	Beep(6600,100);
 	printf("\n");
 
     if ( choice == '1' )
@@ -2602,6 +2571,7 @@ void balanceReports ()
     printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
     printf("\n\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
 	choice = getche();
+	Beep(6600,100);
 	printf("\n");
 
 	if (choice == '1')
@@ -3297,3 +3267,25 @@ int checkDate (int startYear , int startDay ,int startMonth ,int endYear ,int en
             return valid ;
 
 }
+void exitApp(void)
+{
+    system("COLOR b");
+            system("cls");
+            printf("\n\n\n\n\n");
+            printf("\n");
+            printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *      | Thank You For using this Soft-ware |     *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *                                                 *     ");
+            printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+            Sleep(3000);
+            exit(0);
+}
+
