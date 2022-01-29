@@ -17,6 +17,8 @@ int check_email (char email [50]);
 int checkDate (int startYear , int startDay ,int startMonth ,int endYear ,int endDay ,int endMonth ,int searchYear ,int searchDay ,int searchMonth );
 void exitApp(void) ;
 void timer (void) ;
+void developer (void);
+
 
 
 //Global Variables
@@ -86,7 +88,7 @@ void main ()
 	printf("\n                          *                                                 *     ");
 	printf("\n                          *                                                 *     ");
 	printf("\n                          *                                                 *     ");
-	printf("\n                          *                                                 *     ");
+	printf("\n                          *             developed by Sina Vafaei            *     ");
 	printf("\n                          *                                                 *     ");
 	printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
     printf("\n                           \xDB\xDB\xDB\xDB\xB2 ");
@@ -96,7 +98,9 @@ void main ()
 	printf("\n\n");
 	printf("                           \xDB\xDB\xDB\xDB\xB2 2. Login   ");
 	printf("\n\n");
-	printf("                           \xDB\xDB\xDB\xDB\xB2 3. Exit   ");
+	printf("                           \xDB\xDB\xDB\xDB\xB2 3. About Developer   ");
+	printf("\n\n");
+    printf("                           \xDB\xDB\xDB\xDB\xB2 4. Exit   ");
 	printf("\n\n");
 	printf("                           \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
 	choice = getche();
@@ -114,9 +118,12 @@ void main ()
             system("cls");
             login();
             break;
-        case '3':
+        case '4':
             exitApp();
             break;
+        case '3':
+            developer();
+            break ;
         default :
             MessageBox(0,"Enter Valid Number!\nPlease Try again!","Error!!",0);
             system("cls");
@@ -398,7 +405,9 @@ void main_menu ()
     printf("\n                          *                                                 *     ");
     printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 5. Sign Out                              *     ");
     printf("\n                          *                                                 *     ");
-    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 6. Exit                                  *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 6. About Developer                       *     ");
+    printf("\n                          *                                                 *     ");
+    printf("\n                          *  \xDB\xDB\xDB\xDB\xB2 7. Exit                                  *     ");
     printf("\n                          *                                                 *     ");
     printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
 	printf("\n\n\n                          \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ");
@@ -433,6 +442,9 @@ void main_menu ()
             main ();
             break;
         case '6':
+            developer();
+            break;
+        case '7':
             exitApp();
             break;
         default :
@@ -2735,9 +2747,11 @@ void balanceReports ()
                 case '1':
                     system("cls");
                     balanceReports();
+                    break ;
                 case '2':
                     system("cls");
                     main_menu();
+                    break ;
                 default :
                     system("cls");
                     balanceReports();
@@ -2957,7 +2971,7 @@ void balanceReports ()
                 printf("                                                    Source : %s\n" , tempExp->source);
                 printf("                                                    Date : %s/%s/%s\n" , tempExp->year , tempExp->month , tempExp->day);
                 printf("                                                   Description : %s\n" , tempExp->description);
-                printf("                                      \xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2");
+                printf("                                      \xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2  \xB2\xB2\xB2\xB2\xB2");
                 printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\n");
                 expensAmount = atoi(tempExp->amount) ;
                 expensSum = expensAmount + expensSum ;
@@ -3001,5 +3015,41 @@ void balanceReports ()
         system("cls") ;
         main_menu ();
     }
+
+}
+void developer ()
+{
+        system("cls");
+        system("COLOR d");
+        printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+        printf("\n                          *            developed by Sina Vafaei             *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *       Github   => github.com/cnaworld           *     ");
+        printf("\n                          *       Telegram => T.me/donotDisturbb            *     ");
+        printf("\n                          *                                                 *     ");
+        printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2 Please enter your choice : ") ;
+        printf("\n\n                     \xDB\xDB\xDB\xDB\xB2  1. Menu ");
+        printf("\n                     \xDB\xDB\xDB\xDB\xB2  2. Exit ");
+
+        int choose ;
+        choose = getch();
+        Beep(6600,100);
+        switch(choose)
+            {
+                case '1':
+                    system("cls");
+                    main();
+                    break ;
+                case '2':
+                    system("cls");
+                    exitApp();
+                    break ;
+                default :
+                    system("cls");
+                    main();
+                    break;
+
+            }
 
 }

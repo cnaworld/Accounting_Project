@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1643393669 source:c:\users\30na1\desktop\accounting_project\accounting_project\main.c
+1643494930 source:c:\users\30na1\desktop\accounting_project\accounting_project\main.c
 	<stdio.h>
 	<string.h>
 	<windows.h>
@@ -11,5 +11,5 @@
 	<dos.h>
 	"CheckFormat.h"
 
-1643393669 c:\users\30na1\desktop\accounting_project\accounting_project\checkformat.h
+1643436496 c:\users\30na1\desktop\accounting_project\accounting_project\checkformat.h
 

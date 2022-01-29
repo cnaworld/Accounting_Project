@@ -237,7 +237,7 @@ void exitApp(void)
             printf("\n                          *      | Thank You For using this Soft-ware |     *     ");
             printf("\n                          *                                                 *     ");
             printf("\n                          *                                                 *     ");
-            printf("\n                          *                                                 *     ");
+            printf("\n                          *             developed by Sina Vafaei            *     ");
             printf("\n                          *                                                 *     ");
             printf("\n                          *                                                 *     ");
             printf("\n                          *o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*o*     ");
